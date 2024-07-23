@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head">    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <form
+            class="welcome add-offer-form"
+            th:method="POST"
+            th:action="@{/add-design}"
+            th:object="${designData}"
+    >
+    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add design</span></h1>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="name" class="h4 mb-2">Name</label>
+            </div>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    th:field="*{name}"
+                    th:errorclass="'is-invalid alert-danger'"
+            />
+            <small
+                    th:each="error: ${#fields.errors('name')}"
+                    th:text="${error}"
+                    class="invalid-feedback text-danger"
+            >
+                Name error message
+            </small>
+        </div>
+
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="image" class="h4 mb-2">Image URL</label>
+            </div>
+            <textarea
+                    type="text"
+                    class="form-control"
+                    id="image"
+                    name="image"
+                    th:field="*{imageUrl}"
+                    th:errorclass="'is-invalid alert-danger'"
+            ></textarea>
+            <small
+                    th:each="error: ${#fields.errors('imageUrl')}"
+                    th:text="${error}"
+                    class="invalid-feedback text-danger"
+            >
+                Image URL error message
+            </small>
+        </div>
+
+        <div class="form-group">
+            <div class="text-white label-holder d-flex justify-content-center">
+                <label for="category" class="h4 mb-2">Category</label>
+            </div>
+            <select
+                    class="browser-default custom-select"
+                    id="category"
+                    name="category"
+                    th:field="*{category}"
+                    th:errorclass="'is-invalid alert-danger'"
+            >
+                <option value="">Select category</option>
+                <option value="GELISH">Gelish</option>
+                <option value="GEL">Gel</option>
+                <option value="PEDICURE">Pedicure</option>
+                <option value="THERAPY">Therapy</option>
+            </select>
+
+            <small
+                    th:each="error: ${#fields.errors('category')}"
+                    th:text="${error}"
+                    class="invalid-feedback text-danger"
+            >
+                Category error message
+            </small>
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-info  mb-3">Add design</button>
+        </div>
+
+    </form>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>

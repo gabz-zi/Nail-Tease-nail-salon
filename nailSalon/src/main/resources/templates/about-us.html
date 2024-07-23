@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <!--    <div class="container bg-blur rounded mt-5 ">-->
+
+
+    <div class="headline-block">
+        <h1 class="headline display-3 text-center">About Us</h1></div>
+    <p class="glow span w-100 bg-light mx-auto"></p>
+    <hr class="glow w-25 mx-auto second-glow"/>
+
+    <div class="welcome1">
+        <h1 class="pink-text-for-about-us">Where to find us?</h1>
+        <hr class="my-3 bg-white w-50 glow mx-auto"/>
+
+        <div class="flex-container">
+
+            <div class="flex-parts text-content tc-1">
+
+                <div class="text">
+                <h2><i class="fas fa-map-marker-alt"></i> ADDRESS</h2>
+                <p>5th Floor, Harrods</p>
+                <p>87-135 Brompton Rd</p>
+                <p>London SW1X 7XL</p>
+                <p>United Kingdom</p>
+
+                <div class="text-bellow-address">
+                <span>We are conveniently located at the heart of London city with our own</span>
+                <span>tax-free parking allowing you to have the</span>
+                <span>worry-free experience you deserve. Our moto is: "Painted with ease to satisfy</span>
+                <span>very caprice!" and we are proven <span class="margin-to-text-bellow-address">to succeed at meeting all your needs.</span></span>
+                </div>
+                </div>
+
+            </div>
+
+        <div class="map-container mx-1 flex-parts">
+            <!-- Google Maps static map image -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79432.99156300985!2d-0.2665910655196778!3d51.52640593749858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876051460ce92d7%3A0xe1c1c97d6fa77768!2sTownhouse%20Knightsbridge!5e0!3m2!1sbg!2sbg!4v1720557974853!5m2!1sbg!2sbg"
+                        width="400" height="300" style="border:0;"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        </div>
+
+        <h1 class="pink-text-for-about-us">Health & Hygiene</h1>
+        <hr class="my-3 bg-white w-50 glow mx-auto"/>
+
+        <div class="flex-container">
+
+            <div class="flex-parts text-content tc-2"></div>
+
+            <div class="map-container mx-1 flex-parts map2">
+                <div class="text-bellow-address-right text">
+             <p><i class="fas fa-hand-sparkles fa-2x"></i>The health of our customers and hygiene is our utmost priority. That’s why all our tools are either single-use (and recycled) or sterilised in a hospital-grade autoclave machine between each use.</p>
+
+             <p class="part-two-of-health">We also believe in ‘better-for-you’ products – all our polishes and gels are at least 3-free so you don’t need to worry about toxic chemicals.</p>
+                    <p>The Nail Tease team are experts in their field, delivering world-class service all while adhering to industry-leading hygiene standards. Our highly trained nail artists are masters of their craft and will leave you feeling polished to perfection.</p>
+                   <span class="btn-book"><a class="text button" href="/">BOOK</a></span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-3 bg-white w-50 glow mx-auto"/>
+        <div class="flex-container">
+            <div class="our-work glow flex-parts">
+
+                <h2 class="text headers-work"><i class="fa-solid fa-list-check"></i>Our work</h2>
+                <div class="text-bellow-address-right text">
+                <p class="our-work1">Our Founder Gabriela Koleva launched Nail Tease with one goal: to elevate the nail salon experience.</p>
+                <p class="our-work1"> We’ve thrown away the rulebook and reinvented it for the modern age, using years of industry research to perfect every aspect from start to finish.
+                    Say hello to flawless treatments, beautiful salons, and impeccable service that you can rely on every time.</p>
+                </div>
+            </div>
+
+            <div class="flawless-finish flex-parts"></div>
+            <div class="our-business-hours glow flex-parts">
+                <h2 class="text headers-hours"><i class="fa-solid fa-calendar-days"></i>Business hours</h2>
+
+                <div class="flex-container">
+                    <div class="text-bellow-address-right text days">
+                        <p>Monday</p>
+                        <p>Tuesday</p>
+                        <p>Wednesday</p>
+                        <p>Thursday</p>
+                        <p>Friday</p>
+                        <p>Saturday</p>
+                        <p>Sunday</p>
+                    </div>
+
+
+                    <div class="text-bellow-address-right text days hours">
+                        <p>8:00am to 7:00pm</p>
+                        <p>8:00am to 7:00pm</p>
+                        <p>8:00am to 7:00pm</p>
+                        <p>8:00am to 7:00pm</p>
+                        <p>8:00am to 7:00pm</p>
+                        <p>8:00am to 3:00pm</p>
+                        <p>8:00am to 3:00pm</p>
+                    </div>
+                </div>
+
+                <p class="text">Lunch break: 12:00pm to 13:00pm</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</main>
+<footer  th:replace="fragments/commons::footer">  </footer>
+</body>
+</html>
