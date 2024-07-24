@@ -1,6 +1,7 @@
 package com.nailSalon.model.entity;
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 
 @Entity
 @Table(name = "nail_services")
@@ -13,7 +14,7 @@ public class NailService {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Category category;
 
@@ -56,6 +57,14 @@ public class NailService {
     public double getPrice() {
         return price;
     }
+
+    public String getPriceFormatted() {
+        boolean isWholeNumber = (this.price == Math.round(this.price));
+        String pattern = isWholeNumber ? "#.##" : "#.00";
+        DecimalFormat df = new DecimalFormat(pattern);
+        return df.format(this.price);
+    }
+
 
     public void setPrice(double price) {
         this.price = price;

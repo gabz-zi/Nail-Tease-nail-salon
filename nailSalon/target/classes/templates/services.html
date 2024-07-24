@@ -10,41 +10,38 @@
     <!--    <div class="container bg-blur rounded mt-5 ">-->
 
 
-    <div class="headline-block">
-        <h1 class="headline display-3 text-center">Services</h1></div>
-    <p class="glow span w-100 bg-light mx-auto"></p>
-    <hr class="glow w-25 mx-auto second-glow"/>
 
-    <div class="welcome1">
-        <h1 class="pink-text-for-about-us">Where to find us?</h1>
+    <div class="welcome">
+        <h1 class="pink-text-for-about-us">Services</h1>
         <hr class="my-3 bg-white w-50 glow mx-auto"/>
-
-
-
 
 
 
 
         <body>
         <div id="content">
-            <h2>Services</h2>
             <section class="ac-container">
                 <div>
                     <input id="about" name="ac" type="checkbox" />
                     <label for="about">Gelish</label>
                     <article class="ac-tall">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id lobortis mass
+                            Lorem ipsum dolor sit amet, consectetur
                         </p>
                     </article>
                 </div>
                 <div>
                     <input id="services" name="ac" type="checkbox"/>
-                    <label for="services">Gel</label>
+                    <label for="services">Gel (<span th:text="${gelsData.size()}"></span>)
+                        <span class="starting-from" th:text="|starting from  &euro; ${minPriceGel}|"></span>
+                    </label>
                     <article class="ac-tall">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id lobortis massa.
-                        </p>
+                        <table class="table table-striped table-dark">
+                            <tr th:each="gel : ${gelsData}">
+                                <td th:text="${gel.getName()}">{name}</td>
+                                <td th:text="${gel.getPriceFormatted()}">{price}</td>
+                            </tr>
+                        </table>
                     </article>
                 </div>
                 <div>

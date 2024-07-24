@@ -1,6 +1,8 @@
 package com.nailSalon.controller;
 
 import com.nailSalon.model.dto.AddNailServiceDTO;
+import com.nailSalon.model.entity.Category;
+import com.nailSalon.model.entity.NailService;
 import com.nailSalon.service.NailServiceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class NailServiceController {
@@ -57,7 +61,11 @@ public class NailServiceController {
 
     @GetMapping("/services")
         public String getServices(Model model) {
-            model.addAttribute("services", nailServiceService.getAllServices());
+        Map<Category, List<NailService>> allServices = nailServiceService.findAllByCategory();
+        List<NailService> gels = allServices.get(Category.valueOf("GEL"));
+        String minPriceForGel = nailServiceService.getMinPriceForCertainCategory(gels);
+        model.addAttribute("gelsData", gels);
+        model.addAttribute("minPriceGel", minPriceForGel);
             return "services";
     }
 

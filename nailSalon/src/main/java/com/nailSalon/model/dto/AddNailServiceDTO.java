@@ -1,7 +1,7 @@
 package com.nailSalon.model.dto;
 
 import com.nailSalon.model.entity.Category;
-import com.nailSalon.model.entity.StyleName;
+
 
 import javax.validation.constraints.*;
 
@@ -11,17 +11,15 @@ public class AddNailServiceDTO {
     @Size(min = 5, max = 40, message = "Name length must be between 5 and 100 characters!")
     private String name;
 
-    @NotNull(message = "You must select a category!")
-    private Category category;
-
+    @NotNull(message = "You must select a duration!")
+    @NotBlank(message = "You must select a duration!")
+    private String duration;
 
     @NotNull
     @Positive(message = "Please enter valid price!")
     private double price;
-
-    @NotNull(message = "You must select a duration!")
-    @NotBlank(message = "You must select a duration!")
-    private String duration;
+    @NotNull(message = "You must select a category!")
+    private Category category;
 
     private String description;
 
