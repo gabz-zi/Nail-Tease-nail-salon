@@ -594,7 +594,7 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
 }
 .ac-container label{
     overflow: hidden;
-    color: rgb(318, 218, 218);
+    color: #282126;
     cursor: pointer;
     background: #484047;
     margin:8px 0px 0px 0px;
@@ -605,26 +605,30 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
     height: 50px ;
     line-height: normal;
     font-size: 29px;
+    text-shadow: 2px 2px 5px rgb(255, 216, 241);
 }
 .ac-container label:hover{
-    background: lightgray;
-    color: white;
+    background: #8f7883;
+    color: rgb(318, 218, 218);
+    text-shadow: 3px 3px 6px #3a2e38;
 }
 .ac-container input:checked + label,
 .ac-container input:checked + label:hover{
-    background: lightgray;
-    color: white;
+    background: #8f7883;
+    color: rgb(318, 218, 218);
     margin: 6px 0px 0px 0px;
-    font-size: 19px;
-    padding: 5px 20px;
+    font-size: 29px;
+    padding: 10px 20px;
     font-weight: 400;
+    text-shadow: 3px 3px 6px #3a2e38;
+
 }
 .ac-container label:hover:after,
 .ac-container input:checked + label:hover:after{
     content: '';
     position: absolute;
     width: 24px;
-    height: 24px;
+    height: 37px;
     right: 13px;
     top: 7px;
     background: transparent url(https://tympanus.net/Tutorials/CSS3Accordion/images/arrow_down.png) no-repeat center center;
@@ -636,7 +640,7 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
     display: none;
 }
 .ac-container article{
-    background: white;
+    background: #8f7883;
     overflow: hidden;
     height: 0px;
     position: relative;
@@ -660,14 +664,84 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
     transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
 }
 .ac-container input:checked ~ article.ac-short{
-    height: 140px;
+    height: auto;
 }
 .ac-container input:checked ~ article.ac-tall{
-    height: 250px;
+    height: auto;
 }
 .ac-container input:checked ~ article.ac-grande{
-    height: 500px;
+    height: auto;
 }
+
+
+.table-purple {
+    color: rgb(318, 218, 218);
+    font-size: 20px;
+    margin-bottom: 0px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+td.name-column {
+    width: 70%; /* Name column takes 70% of the table width */
+}
+
+td.price-column {
+    width: 30%; /* Price column takes 30% of the table width */
+    text-align: right; /* Aligns text to the right */
+    white-space: nowrap; /* Prevents wrapping */
+}
+
+.table td, .table th {
+    padding: 1.5rem;
+    padding-left: 3em;
+    padding-right: 3em;
+    vertical-align: top;
+    border-top: 1px solid #665865;
+}
+
+
+
+
+.details {
+    font-size: 0.9em; /* Smaller font for additional details */
+    color: #3a2e38;
+    text-shadow: 2px 2px 4px rgb(255, 216, 241);
+
+}
+
+
+.description-link {
+    color: #3a2e38;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 1.5em;
+    font-weight: lighter;
+    text-shadow: 2px 2px 4px rgb(255, 216, 241);
+}
+
+.description-link:hover {
+    color: rgb(318, 218, 218);
+    text-decoration: underline;
+}
+
+/* Ensures the description and duration are aligned under the name */
+.detail-container {
+    display: block;
+    margin-top: 5px;
+}
+
+.name {
+    text-shadow: 2px 2px 4px rgba(87, 64, 85, 0.4);
+}
+
+
+.price-column {
+    text-align: right;
+}
+
+
+
 
 
 
