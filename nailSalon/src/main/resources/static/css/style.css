@@ -790,6 +790,7 @@ td.price-column {
     font-size: 2em;
     color: #310325;
     margin-left: 16em;
+    z-index: 0;
 }
 
 .modal-body {
