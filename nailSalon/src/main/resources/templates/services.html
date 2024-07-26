@@ -16,8 +16,6 @@
         <hr class="my-3 bg-white w-50 glow mx-auto"/>
 
 
-
-
         <body>
         <div id="content">
             <section class="ac-container">
@@ -42,8 +40,8 @@
                                     <div class="name" th:text="${gel.getName()}">Name</div>
                                     <div class="details">
                                         <span th:text="${gel.getDuration()}">Duration</span>
-                                        <span th:if="${gel.getDescription() != null}">
-                                          <a href="#" class="description-link" onclick="alert()">see details</a>
+                                        <span th:if="${T(org.springframework.util.StringUtils).hasText(gel.getDescription())}">
+                                          <a href="#" class="description-link w3-button w3-black" th:onclick="'openModal(\'modal-' + ${gel.id} + '\'); return false;'">see details</a>
                                         </span>
                                     </div>
                                 </td>
@@ -72,8 +70,47 @@
                 </div>
             </section>
         </div>
+
         </body>
         </div>
+
+    <!-- Modal for Gel Details -->
+    <div th:each="gel : ${gelsData}" th:id="'modal-' + ${gel.id}" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal(this.parentElement.parentElement.id)">&times;</span>
+            <div class="modal-header" th:text="${gel.getName()}">Gel Name</div>
+            <div class="modal-body" th:text="${gel.getDescription()}">Description...</div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            setTimeout(function() {
+                modal.style.opacity = 1;
+            }, 10);
+        }
+
+        function closeModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.opacity = 0;
+            setTimeout(function() {
+                modal.style.display = 'none';
+            }, 500);
+        }
+
+        // Close modal when clicking outside the modal content
+        window.onclick = function(event) {
+            var modals = document.getElementsByClassName('modal');
+            for (var i = 0; i < modals.length; i++) {
+                var modal = modals[i];
+                if (event.target == modal) {
+                    closeModal(modal.id);
+                }
+            }
+        }
+    </script>
 
 
 

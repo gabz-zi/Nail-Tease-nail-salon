@@ -564,7 +564,8 @@ p i {
 }
 
 .starting-from {
-    margin-left: 20em;
+    margin-left: 19em;
+    font-size: 30px;
 }
 
 
@@ -594,18 +595,19 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
 }
 .ac-container label{
     overflow: hidden;
-    color: #282126;
+    color: #211c20;
     cursor: pointer;
     background: #484047;
-    margin:8px 0px 0px 0px;
-    padding: 10px 20px;
+    margin:7px 0px 0px 0px;
+    padding: 6px 20px;
     position: relative;
     z-index: 20;
     display: block;
     height: 50px ;
     line-height: normal;
-    font-size: 29px;
+    font-size: 34px;
     text-shadow: 2px 2px 5px rgb(255, 216, 241);
+    font-family: "Cambria Math";
 }
 .ac-container label:hover{
     background: #8f7883;
@@ -616,9 +618,9 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
 .ac-container input:checked + label:hover{
     background: #8f7883;
     color: rgb(318, 218, 218);
-    margin: 6px 0px 0px 0px;
-    font-size: 29px;
-    padding: 10px 20px;
+    margin: 7px 0px 0px 0px;
+    font-size: 34px;
+    padding: 6px 20px;
     font-weight: 400;
     text-shadow: 3px 3px 6px #3a2e38;
 
@@ -676,7 +678,7 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
 
 .table-purple {
     color: rgb(318, 218, 218);
-    font-size: 20px;
+    font-size: 23px;
     margin-bottom: 0px;
     table-layout: fixed;
     width: 100%;
@@ -705,14 +707,14 @@ td.price-column {
 
 .details {
     font-size: 0.9em; /* Smaller font for additional details */
-    color: #3a2e38;
+    color: #282126;
     text-shadow: 2px 2px 4px rgb(255, 216, 241);
 
 }
 
 
 .description-link {
-    color: #3a2e38;
+    color: #282126;
     text-decoration: underline;
     cursor: pointer;
     margin-left: 1.5em;
@@ -741,6 +743,44 @@ td.price-column {
 }
 
 
+
+
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.modal-header {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.modal-close {
+    float: right;
+    cursor: pointer;
+    font-size: 1.5em;
+}
 
 
 
