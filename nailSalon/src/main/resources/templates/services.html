@@ -86,18 +86,12 @@
     <script>
         function openModal(modalId) {
             var modal = document.getElementById(modalId);
-            modal.style.display = 'flex';
-            setTimeout(function() {
-                modal.style.opacity = 1;
-            }, 10);
+            modal.classList.add('show');
         }
 
         function closeModal(modalId) {
             var modal = document.getElementById(modalId);
-            modal.style.opacity = 0;
-            setTimeout(function() {
-                modal.style.display = 'none';
-            }, 500);
+            modal.classList.remove('show');
         }
 
         // Close modal when clicking outside the modal content
