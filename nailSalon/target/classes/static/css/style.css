@@ -614,8 +614,8 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
     color: rgb(318, 218, 218);
     text-shadow: 3px 3px 6px #3a2e38;
 }
-.ac-container input:checked + label,
-.ac-container input:checked + label:hover{
+.ac-container input:checked + div > label,
+.ac-container input:checked + div > label:hover{
     background: #8f7883;
     color: rgb(318, 218, 218);
     margin: 7px 0px 0px 0px;
@@ -625,8 +625,8 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
     text-shadow: 3px 3px 6px #3a2e38;
 
 }
-.ac-container label:hover:after,
-.ac-container input:checked + label:hover:after{
+.ac-container div > label:hover:after,
+.ac-container input:checked + div > label:hover:after{
     content: '';
     position: absolute;
     width: 24px;
@@ -635,7 +635,7 @@ body { font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif; font-wei
     top: 7px;
     background: transparent url(https://tympanus.net/Tutorials/CSS3Accordion/images/arrow_down.png) no-repeat center center;
 }
-.ac-container input:checked + label:hover:after{
+.ac-container input:checked + div > label:hover:after{
     background-image: url(https://tympanus.net/Tutorials/CSS3Accordion/images/arrow_up.png);
 }
 .ac-container input{
@@ -701,6 +701,34 @@ td.price-column {
     vertical-align: top;
     border-top: 1px solid #665865;
 }
+
+.flex-service {
+    display: flex;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center; /* Vertically center the items */
+}
+
+.flex-service label {
+    width: 100%; /* Use the full width available */
+    display: flex;
+    justify-content: space-between; /* Space between service name and price */
+    align-items: center;
+}
+
+.service-name {
+    flex-grow: 1; /* Allow the service name to take available space */
+    max-width: calc(100% - 20em); /* Make room for the starting-from span */
+}
+
+.starting-from {
+    margin-left: 2em; /* Set the desired margin-left */
+    white-space: nowrap; /* Prevent wrapping */
+    flex-shrink: 0; /* Prevent shrinking */
+    text-align: right; /* Ensure the text aligns to the right */
+    margin-right: 1em;
+}
+
+
 
 
 
@@ -794,6 +822,8 @@ td.price-column {
 }
 
 .modal-body {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     color: #310325;
     padding: 15px;
     max-height: 300px;

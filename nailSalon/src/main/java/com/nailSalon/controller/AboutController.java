@@ -12,9 +12,4 @@ public class AboutController {
         return "about-us"; // Renders about.html Thymeleaf template
     }
 
-    @GetMapping("/test")
-    public String test() {
-
-        return "test"; // Renders about.html Thymeleaf template
-    }
 }

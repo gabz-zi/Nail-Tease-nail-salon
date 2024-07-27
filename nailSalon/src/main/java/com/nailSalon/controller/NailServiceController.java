@@ -64,9 +64,32 @@ public class NailServiceController {
         public String getServices(Model model) {
         Map<Category, List<NailService>> allServices = nailServiceService.findAllByCategory();
         List<NailService> gels = allServices.get(Category.valueOf("GEL"));
-        String minPriceForGel = nailServiceService.getMinPriceForCertainCategory(gels);
         model.addAttribute("gelsData", gels);
-        model.addAttribute("minPriceGel", minPriceForGel);
+        if (!gels.isEmpty()) {
+            String minPriceForGel = nailServiceService.getMinPriceForCertainCategory(gels);
+            model.addAttribute("minPriceGel", minPriceForGel);
+        }
+
+        List<NailService> gelishes = allServices.get(Category.valueOf("GELISH"));
+        model.addAttribute("gelishesData", gelishes);
+        if (!gelishes.isEmpty()) {
+            String minPriceForGelish = nailServiceService.getMinPriceForCertainCategory(gelishes);
+            model.addAttribute("minPriceGelish", minPriceForGelish);
+        }
+
+        List<NailService> pedicures = allServices.get(Category.valueOf("PEDICURE"));
+        model.addAttribute("pedicuresData", pedicures);
+        if (!pedicures.isEmpty()) {
+            String minPriceForPedicure = nailServiceService.getMinPriceForCertainCategory(pedicures);
+            model.addAttribute("minPricePedicure", minPriceForPedicure);
+        }
+
+        List<NailService> therapies = allServices.get(Category.valueOf("THERAPY"));
+        model.addAttribute("therapiesData", therapies);
+        if (!therapies.isEmpty()) {
+            String minPriceForTherapy = nailServiceService.getMinPriceForCertainCategory(therapies);
+            model.addAttribute("minPriceTherapy", minPriceForTherapy);
+        }
             return "services";
     }
 
