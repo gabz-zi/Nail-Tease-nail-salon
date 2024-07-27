@@ -53,4 +53,8 @@ public class NailServiceService {
         DecimalFormat df = new DecimalFormat(pattern);
         return df.format(minPrice);
     }
+
+    public void delete(Long id) {
+        nailServiceRepository.deleteById(id);
+    }
 }

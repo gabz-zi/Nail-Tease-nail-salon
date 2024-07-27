@@ -39,7 +39,16 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td class="price-column" th:text="|&euro; ${gelish.getPriceFormatted()}|">{price}</td>
+                                <td class="price-column">
+                                    <div th:text="|&euro; ${gelish.getPriceFormatted()}|"></div>
+                                    <div class="details details-remove">
+                                        <span>
+                                            <form th:action="@{/services/remove/{id}(id=${gelish.id})}" th:method="delete">
+                                            <button type="submit" class="btn btn-danger">Remove</button>
+                                            </form>
+                                        </span>
+                                    </div>
+                                </td>
                             </tr>
                         </table>
                     </article>
@@ -66,8 +75,16 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td class="price-column" th:text="|&euro; ${gel.getPriceFormatted()}|">{price}</td>
-                            </tr>
+                                <td class="price-column">
+                                    <div th:text="|&euro; ${gel.getPriceFormatted()}|"></div>
+                                    <div class="details details-remove">
+                                        <span>
+                                            <form th:action="@{/services/remove/{id}(id=${gel.id})}" th:method="delete">
+                                            <button type="submit" class="btn btn-danger">Remove</button>
+                                            </form>
+                                        </span>
+                                    </div>
+                                </td>                            </tr>
                         </table>
                     </article>
                 </div>
@@ -92,8 +109,16 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td class="price-column" th:text="|&euro; ${pedicure.getPriceFormatted()}|">{price}</td>
-                            </tr>
+                                <td class="price-column">
+                                    <div th:text="|&euro; ${pedicure.getPriceFormatted()}|"></div>
+                                    <div class="details details-remove">
+                                        <span>
+                                            <form th:action="@{/services/remove/{id}(id=${pedicure.id})}" th:method="delete">
+                                            <button type="submit" class="btn btn-danger">Remove</button>
+                                            </form>
+                                        </span>
+                                    </div>
+                                </td>                            </tr>
                         </table>
                     </article>
                 </div>
@@ -116,8 +141,16 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td class="price-column" th:text="|&euro; ${therapy.getPriceFormatted()}|">{price}</td>
-                            </tr>
+                                <td class="price-column">
+                                    <div th:text="|&euro; ${therapy.getPriceFormatted()}|"></div>
+                                    <div class="details details-remove">
+                                        <span>
+                                            <form th:action="@{/services/remove/{id}(id=${therapy.id})}" th:method="delete">
+                                            <button type="submit" class="btn btn-danger">Remove</button>
+                                            </form>
+                                        </span>
+                                    </div>
+                                </td>                            </tr>
                         </table>
                     </article>
                 </div>

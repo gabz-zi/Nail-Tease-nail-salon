@@ -737,7 +737,12 @@ td.price-column {
     font-size: 0.9em; /* Smaller font for additional details */
     color: #282126;
     text-shadow: 2px 2px 4px rgb(255, 216, 241);
+    margin-top: 0.4em;
 
+}
+
+.details-remove {
+    margin-top: 0.3em;
 }
 
 

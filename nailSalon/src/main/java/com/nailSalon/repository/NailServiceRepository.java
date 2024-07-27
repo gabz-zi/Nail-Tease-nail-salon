@@ -11,4 +11,6 @@ import java.util.List;
 public interface NailServiceRepository extends JpaRepository<NailService, Long> {
 
      List<NailService> findAllByCategory(Category cat);
+
+     void deleteById(Long id);
 }
