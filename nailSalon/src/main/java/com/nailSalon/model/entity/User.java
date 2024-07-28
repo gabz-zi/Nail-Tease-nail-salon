@@ -20,6 +20,9 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Appointment> appointments;
+
     @OneToMany(mappedBy = "madeBy")
     private List<Design> addedDesigns;
 
@@ -34,6 +37,7 @@ public class User {
         this.addedDesigns = new ArrayList<>();
         this.favouriteDesigns = new ArrayList<>();
         this.ratedDesigns = new ArrayList<>();
+        this.appointments = new ArrayList<>();
     }
 
 
@@ -70,32 +74,41 @@ public class User {
         this.email = email;
     }
 
-    public List<Design> getAddedPaintings() {
-        return addedDesigns;
-    }
-
-    public void setAddedPaintings(List<Design> addedDesigns) {
-        this.addedDesigns = addedDesigns;
-    }
-
-    public List<Design> getFavouritePaintings() {
-        return favouriteDesigns;
-    }
-
-    public void setFavouritePaintings(List<Design> favouriteDesigns) {
-        this.favouriteDesigns = favouriteDesigns;
-    }
-
-    public List<Design> getRatedPaintings() {
-        return ratedDesigns;
-    }
-
-    public void setRatedPaintings(List<Design> ratedDesigns) {
-        this.ratedDesigns = ratedDesigns;
-    }
 
     public void addFavourite(Design design) {
         this.favouriteDesigns.add(design);
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public List<Design> getAddedDesigns() {
+        return addedDesigns;
+    }
+
+    public void setAddedDesigns(List<Design> addedDesigns) {
+        this.addedDesigns = addedDesigns;
+    }
+
+    public List<Design> getFavouriteDesigns() {
+        return favouriteDesigns;
+    }
+
+    public void setFavouriteDesigns(List<Design> favouriteDesigns) {
+        this.favouriteDesigns = favouriteDesigns;
+    }
+
+    public List<Design> getRatedDesigns() {
+        return ratedDesigns;
+    }
+
+    public void setRatedDesigns(List<Design> ratedDesigns) {
+        this.ratedDesigns = ratedDesigns;
     }
 
 }

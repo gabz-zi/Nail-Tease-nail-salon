@@ -2,6 +2,8 @@ package com.nailSalon.model.entity;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "nail_services")
@@ -27,7 +29,12 @@ public class NailService {
     @Column
     private String description;
 
+
+    @OneToMany(mappedBy = "service", cascade = CascadeType.REMOVE)
+    private List<Appointment> appointments;
+
     public NailService() {
+        this.appointments = new ArrayList<>();
     }
 
     public long getId() {
@@ -84,5 +91,13 @@ public class NailService {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }

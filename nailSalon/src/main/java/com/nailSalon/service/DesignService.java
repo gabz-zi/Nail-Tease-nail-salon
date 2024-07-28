@@ -55,7 +55,7 @@ public class DesignService {
             if (design.getMadeBy().getUsername().equals(loggedUsername)) {
                 myDesigns.add(new MyDesignsDTO(design));
                 User user = userRepository.findByUsername(loggedUsername).get();
-                if (design.getMadeBy().getUsername().equals(loggedUsername) && user.getFavouritePaintings().contains(design)) {
+                if (design.getMadeBy().getUsername().equals(loggedUsername) && user.getFavouriteDesigns().contains(design)) {
                     favsDesigns.add(new FavsDesigns(design));
                 }
                 if (design.isInFavorites()) {

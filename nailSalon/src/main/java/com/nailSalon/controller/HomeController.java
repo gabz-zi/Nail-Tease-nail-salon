@@ -30,7 +30,7 @@ public class HomeController {
     public ModelAndView home(@AuthenticationPrincipal UserDetails userDetails) {
 
         ModelAndView modelAndView = new ModelAndView("home");
-        DesignHomeDTO paintingsForHomePage = designService.getDesignsForHomePage();
+        DesignHomeDTO designsForHomePage = designService.getDesignsForHomePage();
 
         if (userDetails instanceof NailSalonUserDetails nailSalonUserDetails) {
             modelAndView.addObject("welcomeMessage", nailSalonUserDetails.getUsername());
@@ -38,7 +38,7 @@ public class HomeController {
             modelAndView.addObject("welcomeMessage", "Anonymous");
         }
 
-        modelAndView.addObject("designHomeDTO", paintingsForHomePage);
+        modelAndView.addObject("designHomeDTO", designsForHomePage);
 
         return modelAndView;
     }

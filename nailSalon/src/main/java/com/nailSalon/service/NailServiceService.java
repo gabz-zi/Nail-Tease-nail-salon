@@ -57,4 +57,8 @@ public class NailServiceService {
     public void delete(Long id) {
         nailServiceRepository.deleteById(id);
     }
+
+    public NailService getByName(String name) {
+        return nailServiceRepository.getByName(name);
+    }
 }

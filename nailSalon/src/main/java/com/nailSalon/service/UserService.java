@@ -64,10 +64,14 @@ public class UserService {
         return this.userRepository.findById(id).orElseThrow();
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
+    }
+
     public List<Design> getPaintingFromCurrentUser(long id) {
         User user = userRepository.findById(id).orElse(null);
         assert user != null;
-        return user.getAddedPaintings();
+        return user.getAddedDesigns();
     }
 
 
