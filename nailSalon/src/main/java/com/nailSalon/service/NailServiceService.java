@@ -1,6 +1,7 @@
 package com.nailSalon.service;
 
 import com.nailSalon.model.dto.AddNailServiceDTO;
+import com.nailSalon.model.dto.AppointmentServiceDTO;
 import com.nailSalon.model.entity.Category;
 import com.nailSalon.model.entity.NailService;
 import com.nailSalon.repository.NailServiceRepository;
@@ -11,6 +12,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class NailServiceService {
@@ -60,5 +62,19 @@ public class NailServiceService {
 
     public NailService getByName(String name) {
         return nailServiceRepository.getByName(name);
+    }
+
+    public List<AppointmentServiceDTO> getAllServicesForAppointmentPage() {
+        return nailServiceRepository.findAll()
+                .stream()
+                .map(this::toAppointmentServiceDTO)
+                .collect(Collectors.toList());
+    }
+
+    private AppointmentServiceDTO toAppointmentServiceDTO(NailService nailService) {
+        AppointmentServiceDTO appointmentServiceDTO = new AppointmentServiceDTO();
+        appointmentServiceDTO.setName(nailService.getName());
+        appointmentServiceDTO.setPrice(nailService.getPriceFormatted());
+        return appointmentServiceDTO;
     }
 }
