@@ -9,6 +9,7 @@ import com.nailSalon.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Transient;
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 @Service
@@ -27,6 +28,7 @@ public class AppointmentService {
     }
 
     @Transient
+    @Transactional
     public void addAppointmentToUserWithUsername(AddAppointmentDTO addAppointmentDTO, String username) {
         User user = userService.findByUsername(username);
         Appointment appointment = new Appointment();

@@ -5,8 +5,8 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class AddAppointmentDTO {
-    @Future
-    @NotNull
+    @Future(message = "Please select a future date and time!")
+    @NotNull(message = "Please select date and time!")
     private LocalDateTime madeFor;
 
     @NotNull

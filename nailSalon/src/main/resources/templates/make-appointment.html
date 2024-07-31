@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head">    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <div
+            class="welcome add-offer-form">
+        <div class="registration-form">
+            <p class="text-center alert-success alert" th:if="${addedSuccessfully}" th:text="#{submittedAppointment}"></p>
+            <form class="text-center" th:action="@{/appointments/make-appointment}" th:method="post" th:object="${appointmentAddDTO}">
+                <div class="form-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div class="form-group">
+                    <label for="service" th:text="#{chooseService} + ':'"></label>
+                    <label>
+                        <select th:field="*{service}" class="form-control selectpicker" is required>
+                            <option id="service" th:each="service : ${services}" th:text="${service.getName()} + ' - $' + ${service.getPrice()}" th:value="${service.getName()}"></option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="madeFor" th:text="#{makeAppointmentInfo}"></label>
+                    <input id="madeFor" th:field="*{madeFor}" type="datetime-local" class="form-control item"
+                           th:classappend="${#fields.hasErrors('madeFor')} ? 'is-invalid'" is required>
+                    <p class="text-light invalid-feedback rounded bg-danger" th:each="msg : ${#fields.errors('madeFor')}" th:text="${msg.toUpperCase()}"></p>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" th:text="#{submit}"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>

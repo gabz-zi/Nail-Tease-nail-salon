@@ -6,18 +6,19 @@
 <body>
 <header th:replace="fragments/commons::nav"></header>
 <main>
+    <p class="text-center alert-success alert" th:if="${addedSuccessfully}" th:text="#{submittedAppointment}"></p>
     <form class="welcome add-offer-form"
           th:action="@{/appointments/make-appointment1}"
-          th:method="post"
+          th:method="POST"
           th:object="${appointmentAddDTO}">
 
         <h1 class="text-center mt-2">Make an appointment</h1>
 
         <div class="form-group">
             <label for="service">Service</label>
-            <select th:field="*{service}" class="form-control selectpicker" required>
+            <select id="service" th:field="*{service}" class="form-control selectpicker" required>
                 <option th:each="service : ${services}"
-                        th:text="${service.name + ' - $' + service.price}"
+                        th:text="${service.name + ' - &euro;' + service.price}"
                         th:value="${service.name}"></option>
             </select>
             <small th:if="${#fields.hasErrors('service')}"
