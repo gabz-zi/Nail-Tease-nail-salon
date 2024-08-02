@@ -6,16 +6,15 @@
 <body>
 <header th:replace="fragments/commons::nav"></header>
 <main>
-    <p class="text-center alert-success alert" th:if="${addedSuccessfully}" th:text="#{submittedAppointment}"></p>
-    <form class="welcome add-offer-form"
+    <form class="welcome add-offer-form form-header-universal"
           th:action="@{/appointments/make-appointment1}"
           th:method="POST"
           th:object="${appointmentAddDTO}">
 
-        <h1 class="text-center mt-2">Make an appointment</h1>
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add design</span></h1>
 
         <div class="form-group">
-            <label for="service">Service</label>
+            <label for="service" class="h4 mb-2">Service</label>
             <select id="service" th:field="*{service}" class="form-control selectpicker" required>
                 <option th:each="service : ${services}"
                         th:text="${service.name + ' - &euro;' + service.price}"
@@ -29,16 +28,15 @@
         </div>
 
         <div class="form-group">
-            <label for="madeFor">Date and Time</label>
+            <label for="madeFor" class="h4 mb-2">Date and Time</label>
             <input type="datetime-local"
                    id="madeFor"
+                   name="madeFor"
                    th:field="*{madeFor}"
-                   class="form-control" required/>
-            <small th:if="${#fields.hasErrors('madeFor')}"
-                   th:errors="*{madeFor}"
-                   class="invalid-feedback">
-                Date and Time error message
-            </small>
+                   class="form-control"
+                   th:classappend="${#fields.hasErrors('madeFor')} ? 'is-invalid'" is required>
+            <p class="text-light invalid-feedback rounded bg-danger" th:each="msg : ${#fields.errors('madeFor')}" th:text="${msg}"></p>
+
         </div>
 
         <div class="form-group">

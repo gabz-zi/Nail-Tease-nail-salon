@@ -1,6 +1,6 @@
 package com.nailSalon.model.entity;
 
-import com.nailSalon.model.enums.UserRoleEnum;
+import com.nailSalon.model.enums.RoleName;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -16,7 +16,9 @@ public class UserRoleEntity  {
     @NotNull
     @Column(unique = true)
     @Enumerated(EnumType.STRING)
-    private UserRoleEnum role;
+    private RoleName name;
+
+
 
     public Long getId() {
         return id;
@@ -27,12 +29,13 @@ public class UserRoleEntity  {
         return this;
     }
 
-    public UserRoleEnum getRole(UserRoleEnum user) {
-        return role;
+
+    public UserRoleEntity setName(RoleName name) {
+        this.name = name;
+        return this;
     }
 
-    public UserRoleEntity setRole(UserRoleEnum role) {
-        this.role = role;
-        return this;
+    public RoleName getName() {
+        return name;
     }
 }

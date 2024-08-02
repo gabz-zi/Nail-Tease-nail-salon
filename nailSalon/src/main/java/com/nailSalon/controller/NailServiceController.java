@@ -52,10 +52,10 @@ public class NailServiceController {
 
             return "redirect:/add-service";
         }
-
+        redirectAttributes.addFlashAttribute("addedSuccessfully", true);
         nailServiceService.create(data);
 
-        return "redirect:/home";
+        return "redirect:/add-service";
     }
 
     @GetMapping("/services")

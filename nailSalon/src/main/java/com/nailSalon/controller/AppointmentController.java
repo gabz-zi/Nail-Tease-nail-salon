@@ -45,32 +45,8 @@ public class AppointmentController {
     @PostMapping("/make-appointment1")
     public String postMakeAppointment(@Valid AddAppointmentDTO appointmentAddDTO, BindingResult bindingResult,
                                       RedirectAttributes redirectAttributes,
-                                      @AuthenticationPrincipal UserDetails userDetails,  HttpServletRequest request) {
+                                      @AuthenticationPrincipal UserDetails userDetails) {
 
-        // Log raw data
-        String rawDateTime = request.getParameter("madeFor");
-        System.out.println("Raw madeFor value: " + rawDateTime);
-        String rawService = request.getParameter("service");
-        System.out.println("Raw service value: " + rawService);
-
-        // Manually parse the datetime string
-        String madeForStr = request.getParameter("madeFor");
-        System.out.println("Raw madeFor value: " + madeForStr);
-
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-            LocalDateTime parsedDate = LocalDateTime.parse(madeForStr, formatter);
-            System.out.println("Parsed Date: " + parsedDate);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            LocalDateTime parsedDate = LocalDateTime.parse("2024-07-31T21:20", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-            System.out.println("Parsed Date: " + parsedDate);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors().forEach(error -> {

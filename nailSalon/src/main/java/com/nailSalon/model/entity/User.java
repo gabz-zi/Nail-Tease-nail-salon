@@ -1,5 +1,8 @@
 package com.nailSalon.model.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,15 +35,29 @@ public class User {
     @ManyToMany
     private List<Design> ratedDesigns;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @Fetch(FetchMode.SUBSELECT)
+    private List<UserRoleEntity> roles;
+
 
     public User() {
         this.addedDesigns = new ArrayList<>();
         this.favouriteDesigns = new ArrayList<>();
         this.ratedDesigns = new ArrayList<>();
         this.appointments = new ArrayList<>();
+        this.roles = new ArrayList<>();
     }
 
 
+    public List<UserRoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
+    }
 
     public long getId() {
         return id;

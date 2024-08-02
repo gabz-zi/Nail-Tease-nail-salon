@@ -115,12 +115,22 @@ textarea {
 
 .login:hover span {
     background-color: #332231;
+}
 
+.form-header-universal:hover span {
+    background-color: #332231;
 }
 
 .login:hover {
     backdrop-filter: blur(2px);
+}
 
+.form-header-universal:hover {
+    backdrop-filter: blur(2px);
+}
+
+.mb-2 {
+    color: rgb(318, 218, 218);
 }
 
 .home-fields {
@@ -546,6 +556,7 @@ p i {
 
 .badge-dark {
     background-color: #3a2e38;
+    color: rgb(318, 218, 218);
 }
 
 .logout {
@@ -837,6 +848,8 @@ td.price-column {
     margin-top: -0.33em;
     font-size: 1.1em;
 }
+
+
 
 
 

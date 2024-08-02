@@ -2,7 +2,7 @@ package com.nailSalon.service;
 
 import com.nailSalon.model.NailSalonUserDetails;
 import com.nailSalon.model.entity.User;
-import com.nailSalon.model.enums.UserRoleEnum;
+import com.nailSalon.model.enums.RoleName;
 import com.nailSalon.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,7 +29,7 @@ public class NailSalonUserDetailsService implements UserDetailsService {
                         .orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " not found!"));
     }
 
-    private static GrantedAuthority map(UserRoleEnum role) {
+    private static GrantedAuthority map(RoleName role) {
         return new SimpleGrantedAuthority(
                 "ROLE_" + role
         );

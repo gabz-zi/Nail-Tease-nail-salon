@@ -56,8 +56,8 @@ public class DesignController {
 
             return "redirect:/add-design";
         }
-
-        return "redirect:/home";
+        redirectAttributes.addFlashAttribute("addedSuccessfully", true);
+        return "redirect:/add-design";
     }
 
     @GetMapping("/paintings/remove/{id}")

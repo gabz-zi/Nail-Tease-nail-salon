@@ -7,7 +7,7 @@
 <header th:replace="fragments/commons::nav"></header>
 <main>
     <form
-            class="welcome add-offer-form"
+            class="welcome add-offer-form form-header-universal"
             th:method="POST"
             th:action="@{/add-service}"
             th:object="${nailServiceData}"
@@ -29,7 +29,7 @@
             <small
                     th:each="error: ${#fields.errors('name')}"
                     th:text="${error}"
-                    class="invalid-feedback text-danger"
+                    class="invalid-feedback text-light rounded bg-danger"
             >
                 Name error message
             </small>
@@ -58,7 +58,7 @@
             <small
                     th:each="error: ${#fields.errors('duration')}"
                     th:text="${error}"
-                    class="invalid-feedback text-danger"
+                    class="invalid-feedback text-light rounded bg-danger"
             >
                 Duration error message
             </small>
@@ -80,7 +80,7 @@
             <small
                     th:each="error: ${#fields.errors('price')}"
                     th:text="${error}"
-                    class="invalid-feedback text-danger"
+                    class="invalid-feedback text-light rounded bg-danger"
             >
                 Price error message
             </small>
@@ -107,7 +107,7 @@
             <small
                     th:each="error: ${#fields.errors('category')}"
                     th:text="${error}"
-                    class="invalid-feedback text-danger"
+                    class="invalid-feedback text-light rounded bg-danger"
             >
                 Category error message
             </small>
@@ -128,7 +128,7 @@
             <small
                     th:each="error: ${#fields.errors('description')}"
                     th:text="${error}"
-                    class="invalid-feedback text-danger"
+                    class="invalid-feedback text-light rounded bg-danger"
             >
                 Description error message
             </small>
@@ -137,6 +137,8 @@
         <div class="button-holder d-flex justify-content-center">
             <button type="submit" class="btn btn-info  mb-3">Add service</button>
         </div>
+
+        <p th:if="${addedSuccessfully}" class="alert alert-success">Service added successfully!</p>
 
     </form>
 </main>
