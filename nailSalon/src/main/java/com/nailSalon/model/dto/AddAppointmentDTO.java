@@ -1,8 +1,9 @@
 package com.nailSalon.model.dto;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 public class AddAppointmentDTO {

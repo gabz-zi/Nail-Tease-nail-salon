@@ -5,9 +5,9 @@ import com.nailSalon.model.entity.Design;
 import com.nailSalon.model.entity.User;
 import com.nailSalon.repository.DesignRepository;
 import com.nailSalon.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

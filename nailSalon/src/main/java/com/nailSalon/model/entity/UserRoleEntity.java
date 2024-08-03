@@ -1,9 +1,10 @@
 package com.nailSalon.model.entity;
 
 import com.nailSalon.model.enums.RoleName;
-import com.sun.istack.NotNull;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "roles")

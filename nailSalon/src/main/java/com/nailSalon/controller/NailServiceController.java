@@ -4,14 +4,14 @@ import com.nailSalon.model.dto.AddNailServiceDTO;
 import com.nailSalon.model.entity.Category;
 import com.nailSalon.model.entity.NailService;
 import com.nailSalon.service.NailServiceService;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.transaction.Transactional;
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 

@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NailSalonUserDetailsService implements UserDetailsService {
 
@@ -31,16 +32,19 @@ public class NailSalonUserDetailsService implements UserDetailsService {
 
     private static GrantedAuthority map(RoleName role) {
         return new SimpleGrantedAuthority(
-                "ROLE_" + role
+                "ROLE_" + role.name()
         );
     }
 
+
     private static UserDetails map(User user) {
-        return new NailSalonUserDetails(
-                user.getUsername(),
-                user.getPassword(),
-                List.of() /*TODO*/
-        );
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName().name()))
+                .collect(Collectors.toList());
+
+        authorities.forEach(authority -> System.out.println("Assigned authority: " + authority.getAuthority()));
+
+        return new NailSalonUserDetails(user.getUsername(), user.getPassword(), authorities);
     }
 
 

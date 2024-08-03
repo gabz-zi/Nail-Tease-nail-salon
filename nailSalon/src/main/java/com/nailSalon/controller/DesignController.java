@@ -2,6 +2,8 @@ package com.nailSalon.controller;
 
 import com.nailSalon.model.dto.AddDesignDTO;
 import com.nailSalon.service.DesignService;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.transaction.Transactional;
-import javax.validation.Valid;
 
 @Controller
 public class DesignController {

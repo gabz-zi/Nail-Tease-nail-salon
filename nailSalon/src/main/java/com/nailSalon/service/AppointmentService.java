@@ -6,10 +6,10 @@ import com.nailSalon.model.entity.NailService;
 import com.nailSalon.model.entity.User;
 import com.nailSalon.repository.AppointmentRepository;
 import com.nailSalon.repository.UserRepository;
+import jakarta.persistence.Transient;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Transient;
-import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 @Service

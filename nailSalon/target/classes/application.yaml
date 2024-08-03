@@ -7,6 +7,9 @@ spring:
     hibernate:
       ddl-auto: update
     open-in-view: 'false'
+  sql:
+    init:
+      mode: never
   mvc:
     hiddenmethod:
       filter:
@@ -29,3 +32,5 @@ server:
   port: 8080
   servlet:
     application-display-name: NailSalon
+
+

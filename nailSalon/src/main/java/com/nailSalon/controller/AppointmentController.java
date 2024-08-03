@@ -3,6 +3,7 @@ package com.nailSalon.controller;
 import com.nailSalon.model.dto.AddAppointmentDTO;
 import com.nailSalon.service.AppointmentService;
 import com.nailSalon.service.NailServiceService;
+import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -14,10 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/appointments")
@@ -35,14 +32,14 @@ public class AppointmentController {
         return new AddAppointmentDTO();
     }
 
-    @GetMapping("/make-appointment1")
+    @GetMapping("/make-appointment")
     public String makeAppointment(Model model, @AuthenticationPrincipal UserDetails userDetails) {
         model.addAttribute("services", nailServiceService.getAllServicesForAppointmentPage());
-        return "make-appointment1";
+        return "make-appointment";
     }
 
 
-    @PostMapping("/make-appointment1")
+    @PostMapping("/make-appointment")
     public String postMakeAppointment(@Valid AddAppointmentDTO appointmentAddDTO, BindingResult bindingResult,
                                       RedirectAttributes redirectAttributes,
                                       @AuthenticationPrincipal UserDetails userDetails) {
@@ -54,10 +51,10 @@ public class AppointmentController {
             });
             redirectAttributes.addFlashAttribute("appointmentAddDTO", appointmentAddDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.appointmentAddDTO", bindingResult);
-            return "redirect:/appointments/make-appointment1";
+            return "redirect:/appointments/make-appointment";
         }
         redirectAttributes.addFlashAttribute("addedSuccessfully", true);
         appointmentService.addAppointmentToUserWithUsername(appointmentAddDTO, userDetails.getUsername());
-        return "redirect:/appointments/make-appointment1";
+        return "redirect:/appointments/make-appointment";
     }
 }

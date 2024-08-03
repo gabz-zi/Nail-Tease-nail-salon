@@ -1,6 +1,8 @@
 package com.nailSalon.model.entity;
 
-import javax.persistence.*;
+
+import jakarta.persistence.*;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;

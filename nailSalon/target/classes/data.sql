@@ -1,0 +1,1 @@
+INSERT INTO roles VALUES  (1, "USER"), (2, "EMPLOYEE"), (3, "ADMIN")

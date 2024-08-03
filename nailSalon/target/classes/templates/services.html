@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head th:replace="fragments/commons::head">
     <link rel="shortcut icon" href="/favicon.ico">
 </head>
@@ -34,7 +36,7 @@
                                     <div class="name" th:text="${gelish.getName()}">Name</div>
                                     <div class="details">
                                         <span th:text="${gelish.getDuration()}">Duration</span>
-                                        <span th:if="${T(org.springframework.util.StringUtils).hasText(gelish.getDescription())}">
+                                        <span th:if="${!#strings.isEmpty(gelish.getDescription())}">
                                           <a href="#" class="description-link w3-button w3-black" th:onclick="'openModal(\'modal-' + ${gelish.id} + '\'); return false;'">see details</a>
                                         </span>
                                     </div>
@@ -42,7 +44,7 @@
                                 <td class="price-column">
                                     <div th:text="|&euro; ${gelish.getPriceFormatted()}|"></div>
                                     <div class="details details-remove">
-                                        <span>
+                                        <span sec:authorize="hasRole('ADMIN')">
                                             <form th:action="@{/services/remove/{id}(id=${gelish.id})}" th:method="delete">
                                             <button type="submit" class="btn btn-danger">Remove</button>
                                             </form>
@@ -70,7 +72,7 @@
                                     <div class="name" th:text="${gel.getName()}">Name</div>
                                     <div class="details">
                                         <span th:text="${gel.getDuration()}">Duration</span>
-                                        <span th:if="${T(org.springframework.util.StringUtils).hasText(gel.getDescription())}">
+                                        <span th:if="${!#strings.isEmpty(gel.getDescription())}">
                                           <a href="#" class="description-link w3-button w3-black" th:onclick="'openModal(\'modal-' + ${gel.id} + '\'); return false;'">see details</a>
                                         </span>
                                     </div>
@@ -78,7 +80,7 @@
                                 <td class="price-column">
                                     <div th:text="|&euro; ${gel.getPriceFormatted()}|"></div>
                                     <div class="details details-remove">
-                                        <span>
+                                        <span sec:authorize="hasRole('ADMIN')">
                                             <form th:action="@{/services/remove/{id}(id=${gel.id})}" th:method="delete">
                                             <button type="submit" class="btn btn-danger">Remove</button>
                                             </form>
@@ -104,7 +106,7 @@
                                     <div class="name" th:text="${pedicure.getName()}">Name</div>
                                     <div class="details">
                                         <span th:text="${pedicure.getDuration()}">Duration</span>
-                                        <span th:if="${T(org.springframework.util.StringUtils).hasText(pedicure.getDescription())}">
+                                        <span th:if="${!#strings.isEmpty(pedicure.getDescription())}">
                                           <a href="#" class="description-link w3-button w3-black" th:onclick="'openModal(\'modal-' + ${pedicure.id} + '\'); return false;'">see details</a>
                                         </span>
                                     </div>
@@ -112,7 +114,7 @@
                                 <td class="price-column">
                                     <div th:text="|&euro; ${pedicure.getPriceFormatted()}|"></div>
                                     <div class="details details-remove">
-                                        <span>
+                                        <span sec:authorize="hasRole('ADMIN')">
                                             <form th:action="@{/services/remove/{id}(id=${pedicure.id})}" th:method="delete">
                                             <button type="submit" class="btn btn-danger">Remove</button>
                                             </form>
@@ -136,7 +138,7 @@
                                     <div class="name" th:text="${therapy.getName()}">Name</div>
                                     <div class="details">
                                         <span th:text="${therapy.getDuration()}">Duration</span>
-                                        <span th:if="${T(org.springframework.util.StringUtils).hasText(therapy.getDescription())}">
+                                        <span th:if="${!#strings.isEmpty(therapy.getDescription())}">
                                           <a href="#" class="description-link w3-button w3-black" th:onclick="'openModal(\'modal-' + ${therapy.id} + '\'); return false;'">see details</a>
                                         </span>
                                     </div>
@@ -144,7 +146,7 @@
                                 <td class="price-column">
                                     <div th:text="|&euro; ${therapy.getPriceFormatted()}|"></div>
                                     <div class="details details-remove">
-                                        <span>
+                                        <span sec:authorize="hasRole('ADMIN')">
                                             <form th:action="@{/services/remove/{id}(id=${therapy.id})}" th:method="delete">
                                             <button type="submit" class="btn btn-danger">Remove</button>
                                             </form>

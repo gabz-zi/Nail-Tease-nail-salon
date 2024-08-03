@@ -1,7 +1,9 @@
 package com.nailSalon.model.entity;
 
-import javax.persistence.*;
-import javax.validation.constraints.Future;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+
+
 import java.time.LocalDateTime;
 
 @Entity
