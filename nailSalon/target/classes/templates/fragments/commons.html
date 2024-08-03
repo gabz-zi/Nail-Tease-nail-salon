@@ -26,6 +26,7 @@
                th:href="@{/add-service}"
                >
                 Add Service</a>
+
         </div>
 
         <div class="links">
@@ -43,6 +44,10 @@
 
             <li>
                 <a th:href="@{/about-us}">About us</a>
+            </li>
+
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/appointments/make-appointment}">Appointment</a>
             </li>
 
             <li sec:authorize="isAuthenticated()">

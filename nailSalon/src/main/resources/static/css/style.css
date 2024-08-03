@@ -3,7 +3,7 @@
 }
 
 .bg-gray {
-    background-color: #e9ecef;
+    background-color: rgba(255, 218, 218, 0.77);
 }
 
 .bg-nav {
@@ -138,7 +138,7 @@ textarea {
     background-color: rgba(39 41 42 / 40%);
     backdrop-filter: blur(15px);
     margin-bottom: 8px;
-    border: #b3b8bd solid 1px;
+    border: #f9c3df solid 1px;
 }
 
 ul li {
@@ -708,7 +708,6 @@ td.price-column {
 .table td, .table th {
     padding: 1.5rem;
     padding-left: 3em;
-    padding-right: 3em;
     vertical-align: top;
     border-top: 1px solid #665865;
 }
@@ -777,9 +776,6 @@ td.price-column {
     margin-top: 5px;
 }
 
-.name {
-    text-shadow: 2px 2px 4px rgba(87, 64, 85, 0.4);
-}
 
 
 .price-column {
@@ -850,7 +846,56 @@ td.price-column {
 }
 
 
+.col-6 { /* Това е за разположението на MyAppointments в my-appointments, преди беше 50 и бяха два на един ред*/
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
 
+.table-purple-appointments {
+    font-size: 1.2em;
+    margin-bottom: 0px;
+    table-layout: fixed;
+    width: 100%;
+    background-color: rgba(51, 34, 49, 0.32);
+    color: #171316;
+    text-shadow: 2px 2px 6px rgb(255, 216, 241);
+}
+
+.created-on-td {
+    width: 21%;
+}
+
+.made-for-td {
+    width: 22%;
+}
+
+.service-td {
+    width: 20%;
+    text-align: center;
+}
+
+.status-td {
+    width: 16%;
+}
+
+.price-td {
+    width: 18%;
+    text-align: center;
+}
+
+.remove-td {
+    width: 20%;
+}
+
+.header-appointments {
+    font-size: 1.1em;
+    font-weight: 550;
+   margin-left: -0.2em;
+    color: #211c20;
+    text-shadow: 2px 2px 5px rgb(255, 216, 241);
+}
 
 
 
