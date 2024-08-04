@@ -14,7 +14,17 @@ public class PendingAppointmentView {
 
     private String price;
 
+    private String takenBy;
+
     public PendingAppointmentView() {
+    }
+
+    public String getTakenBy() {
+        return takenBy;
+    }
+
+    public void setTakenBy(String takenBy) {
+        this.takenBy = takenBy;
     }
 
     public Long getId() {

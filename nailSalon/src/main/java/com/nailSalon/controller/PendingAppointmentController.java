@@ -26,4 +26,5 @@ public class PendingAppointmentController {
         modelAndView.addObject("pending", pendingAppointments);
         return modelAndView;
     }
+
 }

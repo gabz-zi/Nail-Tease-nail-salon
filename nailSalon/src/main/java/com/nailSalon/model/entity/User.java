@@ -27,6 +27,9 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
+    @OneToMany(mappedBy = "takenBy", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Appointment> acceptedAppointments;
+
     @OneToMany(mappedBy = "madeBy")
     private List<Design> addedDesigns;
 
@@ -49,8 +52,17 @@ public class User {
         this.ratedDesigns = new ArrayList<>();
         this.appointments = new ArrayList<>();
         this.roles = new ArrayList<>();
+        this.acceptedAppointments = new ArrayList<>();
     }
 
+
+    public List<Appointment> getAcceptedAppointments() {
+        return acceptedAppointments;
+    }
+
+    public void setAcceptedAppointments(List<Appointment> acceptedAppointments) {
+        this.acceptedAppointments = acceptedAppointments;
+    }
 
     public List<UserRoleEntity> getRoles() {
         return roles;

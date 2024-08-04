@@ -75,10 +75,13 @@ public class AppointmentService {
         Appointment appointment = appointmentRepository.findById(id).get();
         appointment.getUser().getAppointments().remove(appointment);
         appointment.getService().getAppointments().remove(appointment);
+        appointment.getTakenBy().getAcceptedAppointments().remove(appointment);
         userRepository.save(appointment.getUser());
+        userRepository.save(appointment.getTakenBy());
         nailServiceRepository.save(appointment.getService());
         appointment.setUser(null);
         appointment.setService(null);
+        appointment.setTakenBy(null);
         appointmentRepository.deleteById(id);
     }
 

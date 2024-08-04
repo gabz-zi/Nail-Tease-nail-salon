@@ -30,7 +30,18 @@ public class Appointment {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User takenBy;  // the employee who took the appointment
+
     public Appointment() {
+    }
+
+    public User getTakenBy() {
+        return takenBy;
+    }
+
+    public void setTakenBy(User takenBy) {
+        this.takenBy = takenBy;
     }
 
     public long getId() {

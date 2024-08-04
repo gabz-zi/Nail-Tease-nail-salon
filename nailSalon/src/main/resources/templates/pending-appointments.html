@@ -32,11 +32,13 @@
                                 <td class="service-td" th:text="*{a.getService()}">{service}</td>                                             <!--  <td th:text="*{p.name}"></td>-->
                                 <td class="price-td" th:text="*{a.getPrice()}">{price}</td>                                             <!--  <td th:text="*{p.name}"></td>--><!--  <td th:text="*{p.name}"></td>--><!--  <td th:text="*{p.style.styleName}"></td>-->
                                 <td class="remove-td">                                             <!--  <td style="width: 15%">-->
-                                    <span>
-                                            <form th:action="@{/appointments/remove/{id}(id=${a.id})}" th:method="delete">
-                                            <button type="submit" class="btn btn-danger">Cancel</button>
-                                            </form>
-                                        </span>                                </td>                                                               <!--  <td>-->
+                                    <form th:action="@{/appointments/accept/{id}(id=${a.id})}" th:method="post" style="display:inline;">
+                                        <button type="submit" class="btn-circle btn-success"><i class="fas fa-check"></i></button>
+                                    </form>
+                                    <form th:action="@{/appointments/decline/{id}(id=${a.id})}" th:method="post" style="display:inline;">
+                                        <button type="submit" class="btn-circle btn-danger"><i class="fas fa-times"></i></button>
+                                    </form>
+                                </td>                                                               <!--  <td>-->
                             </tr>
                         </table>
                     </div>

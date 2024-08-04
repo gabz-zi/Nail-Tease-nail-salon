@@ -897,6 +897,27 @@ td.price-column {
     text-shadow: 2px 2px 5px rgb(255, 216, 241);
 }
 
+/*lil btns in the pending appointments for employees*/
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 50%;
+}
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
 
 
 
