@@ -26,7 +26,6 @@
                th:href="@{/add-service}"
                >
                 Add Service</a>
-
         </div>
 
         <div class="links">
@@ -47,7 +46,14 @@
             </li>
 
             <li sec:authorize="isAuthenticated()">
-                <a th:href="@{/appointments/make-appointment}">Appointment</a>
+            <div class="dropdown">
+                <button class="logout dropbtn">Appointments<i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a th:href="@{/appointments/make-appointment}">Make Appointment</a>
+                    <a th:href="@{/my-appointments}">My Appointments</a>
+                    <a sec:authorize="hasRole('EMPLOYEE')" th:href="@{/pending-appointments}">Waiting Approval</a>
+                </div>
+            </div>
             </li>
 
             <li sec:authorize="isAuthenticated()">

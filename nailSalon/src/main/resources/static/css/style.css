@@ -78,6 +78,7 @@ textarea {
 .welcome1:hover {
     box-shadow: 0 1px 5px black;
     backdrop-filter: blur(35px);
+    z-index: -2;
 }
 
 .welcome {
@@ -100,7 +101,7 @@ textarea {
 .welcome:hover {
     box-shadow: 0 1px 5px black;
     backdrop-filter: blur(35px);
-
+    z-index: -1;
 }
 
 .login {
@@ -918,6 +919,63 @@ td.price-column {
     color: white;
 }
 
+
+
+
+
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(52, 46, 52, 0.8);
+    box-shadow: 2px 2px 8px #9b8c9b;
+    backdrop-filter: blur(5px);
+    min-width: 215px;
+    z-index: 1050;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.dropdown {
+    z-index: 1050;
+}
+
+.dropdown-content a {
+    color: rgba(173, 2, 100, 255);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropbtn {
+    padding: 0px 0px;
+    box-shadow: none;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(54, 45, 54);
+    color: #f67dbc;
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.fa-caret-down {
+    margin-left: 0.2em;
+}
 
 
 
