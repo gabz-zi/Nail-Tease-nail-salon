@@ -24,6 +24,19 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
+
+    @Column
+    private boolean isBanned;
+
+
+    public boolean isBanned() {
+        return isBanned;
+    }
+
+    public void setBanned(boolean banned) {
+        isBanned = banned;
+    }
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 

@@ -40,6 +40,8 @@
                                     </form>
                                 </td>                                                               <!--  <td>-->
                             </tr>
+                            <p th:if="${acceptedSuccessfully}" class="alert alert-success">Appointment accepted successfully!</p>
+                            <p th:if="${declinedSuccessfully}" class="alert alert-danger">Appointment declined successfully!</p><!--  <tr>-->
                         </table>
                     </div>
                 </div>

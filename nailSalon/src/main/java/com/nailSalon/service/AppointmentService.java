@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,17 +54,20 @@ public class AppointmentService {
     }
 
     public List<MyAppointmentView> getAppointmentsOfUser(String username) {
-        MyAppointmentView myAppointmentView = new MyAppointmentView();
-        return appointmentRepository.findAllByUserUsername(username)
-                .stream()
-                .map(a -> appointmentToMyAppointment(a, myAppointmentView))
-                .collect(Collectors.toList());
+        List<MyAppointmentView> myAppointmentViewList = new ArrayList<>();
+        List<Appointment> appointments = appointmentRepository.findAllByUserUsername(username);
+        for (Appointment appointment : appointments) {
+            System.out.println(appointment.getService().getName());
+            MyAppointmentView myAppointmentView = appointmentToMyAppointment(appointment, new MyAppointmentView());
+            myAppointmentViewList.add(myAppointmentView);
+        }
+        return myAppointmentViewList;
     }
 
     public MyAppointmentView appointmentToMyAppointment(Appointment appointment, MyAppointmentView myAppointmentView) {
         myAppointmentView.setCreateOn(appointment.getCreateOn().format(DateTimeFormatter.ofPattern("dd.MM.yyyy/HH:mm")));
         myAppointmentView.setMadeFor(appointment.getMadeFor().format(DateTimeFormatter.ofPattern("dd.MM.yyyy/HH:mm")));
-        myAppointmentView.setService(appointment.getService().getName());
+        myAppointmentView.setService(appointment.getService().getCategory().name().toLowerCase());
         myAppointmentView.setStatus(appointment.getStatus() == 0 ? "PENDING" : appointment.getStatus() == 1 ? "APPROVED" : "REJECTED");
         myAppointmentView.setPrice(String.format("€ " + appointment.getService().getPriceFormatted()));
         myAppointmentView.setId(appointment.getId());
@@ -75,30 +79,17 @@ public class AppointmentService {
         Appointment appointment = appointmentRepository.findById(id).get();
         appointment.getUser().getAppointments().remove(appointment);
         appointment.getService().getAppointments().remove(appointment);
-        appointment.getTakenBy().getAcceptedAppointments().remove(appointment);
+        if (appointment.getTakenBy() != null) {
+            appointment.getTakenBy().getAcceptedAppointments().remove(appointment);
+            userRepository.save(appointment.getTakenBy());
+            appointment.setTakenBy(null);
+        }
         userRepository.save(appointment.getUser());
-        userRepository.save(appointment.getTakenBy());
         nailServiceRepository.save(appointment.getService());
         appointment.setUser(null);
         appointment.setService(null);
-        appointment.setTakenBy(null);
         appointmentRepository.deleteById(id);
     }
 
-    public List<PendingAppointmentView> findAllPendingAppointments() {
-        PendingAppointmentView pendingAppointment = new PendingAppointmentView();
-        return appointmentRepository.findAllByStatus(0).stream()
-                .map(a -> appointmentToPendingAppointment(a, pendingAppointment))
-                .collect(Collectors.toList());
-    }
 
-    public PendingAppointmentView appointmentToPendingAppointment(Appointment appointment, PendingAppointmentView pendingAppointment) {
-        pendingAppointment.setCreateOn(appointment.getCreateOn().format(DateTimeFormatter.ofPattern("dd.MM.yyyy/HH:mm")));
-        pendingAppointment.setMadeFor(appointment.getMadeFor().format(DateTimeFormatter.ofPattern("dd.MM.yyyy/HH:mm")));
-        pendingAppointment.setService(appointment.getService().getName());
-        pendingAppointment.setPrice(String.format("€ " + appointment.getService().getPriceFormatted()));
-        pendingAppointment.setId(appointment.getId());
-        pendingAppointment.setCreateBy(appointment.getUser().getUsername());
-        return pendingAppointment;
-    }
 }
