@@ -57,7 +57,7 @@ public class HomeController {
     public String removeAppointment(@PathVariable Long id) {
         appointmentService.delete(id);
         ModelAndView modelAndView = new ModelAndView("my-appointments");
-        modelAndView.addObject("addedSuccessfully", true);
+        modelAndView.addObject("removedSuccessfully", true);
         return "redirect:/my-appointments";
     }
 }

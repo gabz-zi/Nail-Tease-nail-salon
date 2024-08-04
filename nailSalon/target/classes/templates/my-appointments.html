@@ -37,11 +37,11 @@
                                 <td class="remove-td">                                             <!--  <td style="width: 15%">-->
                                     <span>
                                             <form th:action="@{/appointments/remove/{id}(id=${a.id})}" th:method="delete">
-                                            <button type="submit" class="btn btn-danger">Remove</button>
+                                            <button type="submit" class="btn btn-danger">Cancel</button>
                                             </form>
                                         </span>                                </td>                                                               <!--  <td>-->
                             </tr>
-                            <p th:if="${addedSuccessfully}" class="alert alert-danger">Appointment canceled successfully!</p><!--  <tr>-->
+                            <p th:if="${removedSuccessfully}" class="alert alert-danger">Appointment canceled successfully!</p><!--  <tr>-->
                         </table>
                     </div>
                 </div>

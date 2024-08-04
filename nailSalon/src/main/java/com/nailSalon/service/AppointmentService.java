@@ -5,6 +5,7 @@ import com.nailSalon.model.entity.Appointment;
 import com.nailSalon.model.entity.NailService;
 import com.nailSalon.model.entity.User;
 import com.nailSalon.model.view.MyAppointmentView;
+import com.nailSalon.model.view.PendingAppointmentView;
 import com.nailSalon.repository.AppointmentRepository;
 import com.nailSalon.repository.NailServiceRepository;
 import com.nailSalon.repository.UserRepository;
@@ -81,4 +82,20 @@ public class AppointmentService {
         appointmentRepository.deleteById(id);
     }
 
+    public List<PendingAppointmentView> findAllPendingAppointments() {
+        PendingAppointmentView pendingAppointment = new PendingAppointmentView();
+        return appointmentRepository.findAllByStatus(0).stream()
+                .map(a -> appointmentToPendingAppointment(a, pendingAppointment))
+                .collect(Collectors.toList());
+    }
+
+    public PendingAppointmentView appointmentToPendingAppointment(Appointment appointment, PendingAppointmentView pendingAppointment) {
+        pendingAppointment.setCreateOn(appointment.getCreateOn().format(DateTimeFormatter.ofPattern("dd.MM.yyyy/HH:mm")));
+        pendingAppointment.setMadeFor(appointment.getMadeFor().format(DateTimeFormatter.ofPattern("dd.MM.yyyy/HH:mm")));
+        pendingAppointment.setService(appointment.getService().getName());
+        pendingAppointment.setPrice(String.format("€ " + appointment.getService().getPriceFormatted()));
+        pendingAppointment.setId(appointment.getId());
+        pendingAppointment.setCreateBy(appointment.getUser().getUsername());
+        return pendingAppointment;
+    }
 }
