@@ -18,6 +18,7 @@
                             <tr class="my-designs">
                                 <td>Created by</td>
                                 <td>Exact time</td>
+                                <td>Duration</td>
                                 <td>Service</td>
                                 <td>Price</td>
                             </tr>
@@ -26,6 +27,7 @@
                             <tr class="my-designs" th:each="a : ${forToday}">
                                 <td class="status-td-today" th:text="*{a.getCreateBy()}">{created by}</td>
                                 <td class="made-for-td-today" th:text="*{a.getTime()}">{made for}</td>
+                                <td class="duration-td-today" th:text="*{a.getDuration()}">{duration}</td>
                                 <td class="service-td-today" th:text="*{a.getService()}">{service}</td>
                                 <td class="price-td-today" th:text="|&euro; *{a.getPrice()}|">{price}</td>
                             </tr>

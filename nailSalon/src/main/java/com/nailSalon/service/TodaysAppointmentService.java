@@ -46,6 +46,7 @@ public class TodaysAppointmentService {
         TodaysAppointmentView view = new TodaysAppointmentView();
         view.setCreateBy(appointment.getUser().getUsername());
         view.setTime(appointment.getMadeFor());
+        view.setDuration(appointment.getService().getDuration());
         view.setService(appointment.getService().getCategory().name());
         view.setPrice(appointment.getService().getPriceFormatted());
         return view;

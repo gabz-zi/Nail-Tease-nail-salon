@@ -9,6 +9,9 @@ public class TodaysAppointmentView {
 
     private String time;
 
+    private String duration;
+
+
     private String service;
 
     private String price;
@@ -25,6 +28,15 @@ public class TodaysAppointmentView {
         String hours = dateTime.format(DateTimeFormatter.ofPattern("HH:mm"));
         String day = dateTime.format(DateTimeFormatter.ofPattern("dd.MM"));
         this.time = "at " + hours + " on " + day;
+    }
+
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
 

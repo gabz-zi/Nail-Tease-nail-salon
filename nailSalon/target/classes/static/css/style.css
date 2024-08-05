@@ -975,12 +975,13 @@ nav {
     z-index: 1000; /* Adjust as necessary */
 }
 
+/*style table rows for todays-appointments*/
 .status-td-today {
     width: 20%;
 }
 
 .made-for-td-today {
-    width: 32%;
+    width: 20%;
 }
 
 .service-td-today {
@@ -988,6 +989,10 @@ nav {
 }
 
 .price-td-today {
+    width: 16%;
+}
+
+.duration-td-today {
     width: 20%;
 }
 
