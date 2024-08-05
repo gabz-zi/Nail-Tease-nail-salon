@@ -32,7 +32,7 @@ public class PendingAppointmentService {
 
     public List<PendingAppointmentView> findAllPendingAppointments(String username) {
         List<PendingAppointmentView> pendingAppointmentViewList = new ArrayList<>();
-        List<Appointment> appointments = appointmentRepository.findAllByStatusAndUserUsernameNot(0, username);
+        List<Appointment> appointments = appointmentRepository.findAllByStatusAndUserUsernameNotAndCancelled(0, username, false);
         for (Appointment appointment : appointments) {
             PendingAppointmentView pendingAppointment = appointmentToPendingAppointment(appointment, new PendingAppointmentView());
             pendingAppointmentViewList.add(pendingAppointment);

@@ -13,11 +13,14 @@ import jakarta.persistence.Transient;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,6 +48,7 @@ public class AppointmentService {
         appointment.setMadeFor(addAppointmentDTO.getMadeFor());
         appointment.setCreateOn(LocalDateTime.now());
         appointment.setStatus(0);
+        appointment.setCancelled(false);
         appointment.setUser(user);
         NailService service = nailService.getByName(addAppointmentDTO.getService());
         service.getAppointments().add(appointment);
@@ -56,9 +60,8 @@ public class AppointmentService {
 
     public List<MyAppointmentView> getAppointmentsOfUser(String username) {
         List<MyAppointmentView> myAppointmentViewList = new ArrayList<>();
-        List<Appointment> appointments = appointmentRepository.findAllByUserUsername(username);
+        List<Appointment> appointments = appointmentRepository.findAllByUserUsernameAndCancelled(username, false);
         for (Appointment appointment : appointments) {
-            System.out.println(appointment.getService().getName());
             MyAppointmentView myAppointmentView = appointmentToMyAppointment(appointment, new MyAppointmentView());
             myAppointmentViewList.add(myAppointmentView);
         }
@@ -94,4 +97,43 @@ public class AppointmentService {
     }
 
 
+    @Transactional //scheduled method
+    public void deleteRejectedAndCancelledAppointmentsAndTrackEmployees() {
+        LocalDateTime startOfDay = LocalDate.now().atStartOfDay();
+        LocalDateTime endOfDay = LocalDate.now().atTime(LocalTime.MAX); // End of the day (23:59:59)
+
+        List<Appointment> rejectedAppointments = new ArrayList<>();
+        List<Appointment> cancelledAppointments = new ArrayList<>();
+
+        rejectedAppointments = appointmentRepository.findAllByStatusAndCreateOnBetween(3, startOfDay, endOfDay);
+        Map<User, Long> declinedCounts = rejectedAppointments.stream()
+                .collect(Collectors.groupingBy(Appointment::getTakenBy, Collectors.counting()));
+
+        for (Appointment rejected : rejectedAppointments) {
+            delete(rejected.getId());
+        }
+
+        cancelledAppointments = appointmentRepository.findAllByCancelled(true);
+        for (Appointment cancelled : cancelledAppointments) {
+            delete(cancelled.getId());
+        }
+
+        for (Map.Entry<User, Long> entry : declinedCounts.entrySet()) {
+            User employee = entry.getKey();
+            Long count = entry.getValue();
+            if (count >= 5) {
+                employee.setBanned(true);
+                userRepository.save(employee);
+            }
+        }
+    }
+
+    // SINCE IT'S OPTIONAL THERE MIGHT EB A NEED FOR CHECKING "ORELSE THROW"
+    public Appointment findById(Long id) {
+        return appointmentRepository.findById(id).get();
+    }
+
+    public void save(Appointment appointment) {
+        appointmentRepository.save(appointment);
+    }
 }

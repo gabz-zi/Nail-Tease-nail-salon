@@ -26,6 +26,9 @@ public class Appointment {
     @Column(nullable = false)
     private Integer status = 0;
 
+    @Column
+    private boolean cancelled;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
@@ -34,6 +37,14 @@ public class Appointment {
     private User takenBy;  // the employee who took the appointment
 
     public Appointment() {
+    }
+
+    public boolean getCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 
     public User getTakenBy() {

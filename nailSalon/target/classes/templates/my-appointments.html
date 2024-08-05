@@ -36,12 +36,12 @@
                                 <td class="price-td-original" th:text="*{a.getPrice()}">{price}</td>                                             <!--  <td th:text="*{p.name}"></td>--><!--  <td th:text="*{p.name}"></td>--><!--  <td th:text="*{p.style.styleName}"></td>-->
                                 <td class="remove-td-original">                                             <!--  <td style="width: 15%">-->
                                     <span>
-                                            <form th:action="@{/appointments/remove/{id}(id=${a.id})}" th:method="delete">
+                                            <form th:action="@{/appointments/remove/{id}(id=${a.id})}" th:method="POST">
                                             <button type="submit" class="btn btn-danger">Cancel</button>
                                             </form>
                                         </span>                                </td>                                                               <!--  <td>-->
                             </tr>
-                            <p th:if="${removedSuccessfully}" class="alert alert-danger">Appointment canceled successfully!</p><!--  <tr>-->
+                            <p th:if="${removedSuccessfully}" class="alert alert-danger">Appointment cancelled successfully!</p><!--  <tr>-->
                         </table>
                     </div>
                 </div>

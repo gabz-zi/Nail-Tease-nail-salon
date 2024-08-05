@@ -19,4 +19,16 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     List<Appointment> findAllByStatusAndUserUsernameNot(Integer number, String username);
 
     List<Appointment> findAllByTakenBy_UsernameAndStatus(String username, int i);
+
+    List<Appointment> findAllByStatusAndCreateOnBetween(Integer status, LocalDateTime start, LocalDateTime end);
+
+    List<Appointment> findAllByStatus(int i);
+
+    List<Appointment> findAllByUserUsernameAndStatusNot(String username, int i);
+
+    List<Appointment> findAllByUserUsernameAndCancelled(String username, boolean cancelled);
+
+    List<Appointment> findAllByStatusAndUserUsernameNotAndCancelled(int i, String username, boolean b);
+
+    List<Appointment> findAllByCancelled(boolean b);
 }

@@ -42,8 +42,6 @@ public class NailSalonUserDetailsService implements UserDetailsService {
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName().name()))
                 .collect(Collectors.toList());
 
-        authorities.forEach(authority -> System.out.println("Assigned authority: " + authority.getAuthority()));
-
         return new NailSalonUserDetails(user.getUsername(), user.getPassword(), authorities);
     }
 

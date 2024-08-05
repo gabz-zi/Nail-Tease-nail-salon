@@ -2,6 +2,7 @@ package com.nailSalon.controller;
 
 import com.nailSalon.model.NailSalonUserDetails;
 import com.nailSalon.model.dto.DesignHomeDTO;
+import com.nailSalon.model.entity.Appointment;
 import com.nailSalon.model.view.MyAppointmentView;
 import com.nailSalon.service.AppointmentService;
 import com.nailSalon.service.DesignService;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -53,11 +56,12 @@ public class HomeController {
         return modelAndView;
     }
 
-    @DeleteMapping("/appointments/remove/{id}")
-    public String removeAppointment(@PathVariable Long id) {
-        appointmentService.delete(id);
-        ModelAndView modelAndView = new ModelAndView("my-appointments");
-        modelAndView.addObject("removedSuccessfully", true);
+    @PostMapping("/appointments/remove/{id}")
+    public String removeAppointment(RedirectAttributes redirectAttributes, @PathVariable Long id) {
+        Appointment appointment = appointmentService.findById(id);
+        appointment.setCancelled(true);
+        appointmentService.save(appointment);
+        redirectAttributes.addFlashAttribute("removedSuccessfully", true);
         return "redirect:/my-appointments";
     }
 }
