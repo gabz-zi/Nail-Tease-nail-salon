@@ -15,7 +15,7 @@
         <div class="row mt-1 mb-2">
             <div class="col-6 mt-1 mb-1">
                 <div>
-                    <div class="home-fields" style="height: 50vh; width: 100%; overflow: auto">
+                    <div class="home-fields" style="height: 60vh; width: 100%; overflow: auto">
                         <h3 class="my-designs">My Appointments</h3>
                         <table class="table header-appointments">
                             <tr class="my-designs">
@@ -29,12 +29,12 @@
                         </table>
                         <table class="table table-striped table-purple-appointments">                 <!--//TODO--><!--  Hint-->
                             <tr class="my-designs" th:each="a : ${myAppointments}">                                               <!--  <tr class="my-designs" th:each="p : ${YourPaintings.getPaintings}">-->
-                                <td class="created-on-td" th:text="*{a.getCreateOn()}">{appointment created on}</td>                                             <!--  <td th:text="*{p.name}"></td>-->
-                                <td class="made-for-td" th:text="*{a.getMadeFor()}">{made for}</td>
-                                <td class="service-td" th:text="*{a.getService()}">{service}</td>                                             <!--  <td th:text="*{p.name}"></td>-->
-                                <td class="status-td" th:text="*{a.getStatus()}">{status}</td>
-                                <td class="price-td" th:text="*{a.getPrice()}">{price}</td>                                             <!--  <td th:text="*{p.name}"></td>--><!--  <td th:text="*{p.name}"></td>--><!--  <td th:text="*{p.style.styleName}"></td>-->
-                                <td class="remove-td">                                             <!--  <td style="width: 15%">-->
+                                <td class="created-on-td-original" th:text="*{a.getCreateOn()}">{appointment created on}</td>                                             <!--  <td th:text="*{p.name}"></td>-->
+                                <td class="made-for-td-original" th:text="*{a.getMadeFor()}">{made for}</td>
+                                <td class="service-td-original" th:text="*{a.getService()}">{service}</td>                                             <!--  <td th:text="*{p.name}"></td>-->
+                                <td class="status-td-original" th:text="*{a.getStatus()}">{status}</td>
+                                <td class="price-td-original" th:text="*{a.getPrice()}">{price}</td>                                             <!--  <td th:text="*{p.name}"></td>--><!--  <td th:text="*{p.name}"></td>--><!--  <td th:text="*{p.style.styleName}"></td>-->
+                                <td class="remove-td-original">                                             <!--  <td style="width: 15%">-->
                                     <span>
                                             <form th:action="@{/appointments/remove/{id}(id=${a.id})}" th:method="delete">
                                             <button type="submit" class="btn btn-danger">Cancel</button>

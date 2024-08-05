@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,6 +62,7 @@ public class AppointmentService {
             MyAppointmentView myAppointmentView = appointmentToMyAppointment(appointment, new MyAppointmentView());
             myAppointmentViewList.add(myAppointmentView);
         }
+        myAppointmentViewList.sort(Comparator.comparing(MyAppointmentView::getMadeFor));
         return myAppointmentViewList;
     }
 

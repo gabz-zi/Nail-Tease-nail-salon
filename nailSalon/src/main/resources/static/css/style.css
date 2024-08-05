@@ -991,5 +991,32 @@ nav {
     width: 20%;
 }
 
+/*style table rows for my-appointments*/
+.created-on-td-original {
+    width: 21%;
+}
+
+.made-for-td-original {
+    width: 21%;
+}
+
+.service-td-original {
+    width: 18%;
+}
+
+.status-td-original {
+    width: 18%;
+}
+
+.price-td-original {
+    width: 13%;
+    text-align: center;
+}
+
+.remove-td-original {
+    width: 21%;
+}
+
+
 
 
