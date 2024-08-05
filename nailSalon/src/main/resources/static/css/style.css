@@ -996,32 +996,51 @@ nav {
     width: 20%;
 }
 
-/*style table rows for my-appointments*/
-.created-on-td-original {
-    width: 21%;
+/*style table rows for banned-employees*/
+.created-on-td-firing {
+    width: 22%;
 }
 
-.made-for-td-original {
-    width: 21%;
-}
-
-.service-td-original {
-    width: 18%;
-}
-
-.status-td-original {
-    width: 18%;
-}
-
-.price-td-original {
-    width: 13%;
-    text-align: center;
-}
-
-.remove-td-original {
-    width: 21%;
+.status-td-firing {
+    width: 27%;
 }
 
 
+.remove-td-firing {
+    width: 26%;
+}
+
+.btn-fire {
+    border-radius: 5px;
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.header-firing {
+    margin-left: -3.2em;
+}
+
+
+/*style table rows for todays-appointments*/
+.status-td-today {
+    width: 20%;
+}
+
+.made-for-td-today {
+    width: 20%;
+}
+
+.service-td-today {
+    width: 15%;
+}
+
+.price-td-today {
+    width: 16%;
+}
+
+.duration-td-today {
+    width: 20%;
+}
 
 

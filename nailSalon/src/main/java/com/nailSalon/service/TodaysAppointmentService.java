@@ -18,14 +18,10 @@ import java.util.stream.Collectors;
 @Service
 public class TodaysAppointmentService {
 
-    private final UserService userService;
     private final AppointmentRepository appointmentRepository;
-    private final UserRepository userRepository;
 
-    public TodaysAppointmentService(UserService userService, AppointmentRepository appointmentRepository, UserRepository userRepository) {
-        this.userService = userService;
+    public TodaysAppointmentService(AppointmentRepository appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
-        this.userRepository = userRepository;
     }
 
     public List<TodaysAppointmentView> findAllAppointmentsForToday(String username) {

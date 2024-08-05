@@ -122,7 +122,7 @@ public class AppointmentService {
             User employee = entry.getKey();
             Long count = entry.getValue();
             if (count >= 5) {
-                employee.setBanned(true);
+                employee.setIsBanned(true);
                 userRepository.save(employee);
             }
         }

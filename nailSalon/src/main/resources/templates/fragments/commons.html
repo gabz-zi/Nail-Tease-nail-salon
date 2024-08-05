@@ -53,7 +53,6 @@
                     <a th:href="@{/my-appointments}">My Appointments</a>
                     <a sec:authorize="hasRole('EMPLOYEE')" th:href="@{/pending-appointments}">Awaiting Approval</a>
                     <a sec:authorize="hasRole('EMPLOYEE')" th:href="@{/todays-appointments}">For Today</a>
-
                 </div>
             </div>
             </li>

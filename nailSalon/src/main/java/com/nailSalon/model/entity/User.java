@@ -29,14 +29,6 @@ public class User {
     private boolean isBanned;
 
 
-    public boolean isBanned() {
-        return isBanned;
-    }
-
-    public void setBanned(boolean banned) {
-        isBanned = banned;
-    }
-
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
@@ -68,7 +60,13 @@ public class User {
         this.acceptedAppointments = new ArrayList<>();
     }
 
+    public boolean getIsBanned() {
+        return isBanned;
+    }
 
+    public void setIsBanned(boolean banned) {
+        this.isBanned = banned;
+    }
     public List<Appointment> getAcceptedAppointments() {
         return acceptedAppointments;
     }
