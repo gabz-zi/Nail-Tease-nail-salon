@@ -1,7 +1,6 @@
 package com.nailSalon.controller;
 
 import com.nailSalon.model.view.BannedEmployeeView;
-import com.nailSalon.model.view.TodaysAppointmentView;
 import com.nailSalon.service.BannedEmployeeService;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

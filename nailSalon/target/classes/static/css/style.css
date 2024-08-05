@@ -1043,4 +1043,99 @@ nav {
     width: 20%;
 }
 
+/*styling for careers*/
+.careers-bg-container {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the overlay does not extend outside the container */
+    margin-bottom: 4em;
+}
+
+.careers-bg {
+    background-image: url("./images/our team.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 380px;
+    border-radius: 8px;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(233deg, rgba(0, 0, 0, 0.05) 50%, #1A0B00 91%);
+    opacity: 0.84;
+    border-radius: 8px;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+
+.tease {
+    margin-left: 0.5em;
+}
+
+.text-overlay h1 {
+    font-size: 3em;
+    margin: 0;
+    font-family: -webkit-body, serif;
+}
+
+.text-overlay p {
+    font-size: 1.2em;
+    font-family: math;
+    margin-left: -5em;
+}
+
+
+.flex-container-careers {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0px; /* Add some gap between the text and the map */
+    flex-wrap: wrap; /* Allows wrapping if the screen size is too small */
+    margin-bottom: -1em;
+    margin-top: 3em;
+}
+
+.text-bellow-address-right-careers {
+    padding-right: 1.8em;
+    padding-top: 0.5em;
+}
+
+
+.tc-2-careers{
+    background-image:url("./images/atmsophere.jpg");
+    background-repeat: no-repeat;
+    max-width: 600px; /* Fixed width to match the iframe width */
+    height: 348px; /* Fixed height to match the iframe height */
+}
+
+.map-container-career {
+    flex: 1;
+    height: 400px; /* Fixed height to match the iframe height */
+}
+
+.btn-join-us {
+    min-width: 500px;
+    position: absolute;
+    bottom: 38px;
+    right: 0px;
+}
+
+.careers-welcome {
+    padding-top: 3em;
+}
 

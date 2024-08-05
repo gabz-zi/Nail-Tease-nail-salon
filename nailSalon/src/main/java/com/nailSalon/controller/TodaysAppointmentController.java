@@ -1,6 +1,5 @@
 package com.nailSalon.controller;
 
-import com.nailSalon.model.view.PendingAppointmentView;
 import com.nailSalon.model.view.TodaysAppointmentView;
 import com.nailSalon.service.TodaysAppointmentService;
 import jakarta.transaction.Transactional;

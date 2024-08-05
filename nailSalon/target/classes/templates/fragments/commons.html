@@ -22,10 +22,17 @@
               >
                 Add Design</a>
 
-            <a sec:authorize="hasRole('ADMIN')"
-               th:href="@{/add-service}"
-               >
-                Add Service</a>
+            <a sec:authorize="hasRole('ADMIN')">
+                <div class="dropdown">
+                    <button class="logout dropbtn">Admin<i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a th:href="@{/add-service}">Add Service</a>
+                        <a th:href="@{/banned-employees}">Firing</a>
+                        <a th:href="@{/careers}">Hiring</a>
+                    </div>
+                </div>
+            </a>
+
         </div>
 
         <div class="links">
@@ -37,12 +44,16 @@
                 <a th:href="@{/register}">Register</a>
             </li>
 
-            <li>
-                <a th:href="@{/services}">Services</a>
-            </li>
 
             <li>
-                <a th:href="@{/about-us}">About us</a>
+                <div class="dropdown">
+                    <button class="logout dropbtn">About<i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a th:href="@{/about-us}">About Us</a>
+                        <a th:href="@{/services}">Services</a>
+                        <a sec:authorize="isAuthenticated()" th:href="@{/careers}">Careers</a>
+                    </div>
+                </div>
             </li>
 
             <li sec:authorize="isAuthenticated()">
