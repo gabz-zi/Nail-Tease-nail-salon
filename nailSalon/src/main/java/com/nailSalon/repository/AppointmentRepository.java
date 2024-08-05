@@ -4,6 +4,7 @@ import com.nailSalon.model.entity.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -16,4 +17,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     Optional<Appointment> findById(Long id);
 
     List<Appointment> findAllByStatusAndUserUsernameNot(Integer number, String username);
+
+    List<Appointment> findAllByTakenBy_UsernameAndStatus(String username, int i);
 }

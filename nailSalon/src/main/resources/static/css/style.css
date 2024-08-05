@@ -975,7 +975,21 @@ nav {
     z-index: 1000; /* Adjust as necessary */
 }
 
+.status-td-today {
+    width: 20%;
+}
 
+.made-for-td-today {
+    width: 32%;
+}
+
+.service-td-today {
+    width: 15%;
+}
+
+.price-td-today {
+    width: 20%;
+}
 
 
 

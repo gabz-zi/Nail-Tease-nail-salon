@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+
+    <div class="welcome mt-1 mb-4">
+        <div class="row mt-1 mb-2">
+            <div class="col-6 mt-1 mb-1">
+                <div>
+                    <div class="home-fields" style="height: 80vh; width: 100%; overflow: auto">
+                        <h3 class="my-designs">Appointments for today</h3>
+                        <table class="table header-appointments">
+                            <tr class="my-designs">
+                                <td>Created by</td>
+                                <td>Exact time</td>
+                                <td>Service</td>
+                                <td>Price</td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-purple-appointments">
+                            <tr class="my-designs" th:each="a : ${forToday}">
+                                <td class="status-td-today" th:text="*{a.getCreateBy()}">{created by}</td>
+                                <td class="made-for-td-today" th:text="*{a.getTime()}">{made for}</td>
+                                <td class="service-td-today" th:text="*{a.getService()}">{service}</td>
+                                <td class="price-td-today" th:text="|&euro; *{a.getPrice()}|">{price}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+    </div>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>
