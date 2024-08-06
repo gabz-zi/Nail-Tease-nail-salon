@@ -67,6 +67,7 @@
             <button type="submit" class="btn btn-info  mb-3">Apply for Job</button>
         </div>
         <p th:if="${applicationSubmitted}" class="alert alert-success">Application submitted successfully!</p>
+        <p th:if="${applicationNotSubmitted}" class="alert alert-danger">You have already applied!</p>
 
 
     </form>

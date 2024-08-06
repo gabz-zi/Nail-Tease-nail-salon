@@ -40,12 +40,12 @@ public class CV {
                     description = "I have undergone several nail artistry courses and am eager to put the learned into practise.";
             case INTERN ->
                     description = "Still building knowledge but have found it helpful to be in a real work environment where I was given small but meaningful tasks.";
-            case EMPLOYEE_BEGINNER ->
+            case BEGINNER ->
                     description = "I have been practising the profession for about a year.";
-            case EMPLOYEE_INTERMEDIATE ->
+            case INTERMEDIATE ->
                     description = "I have been working in the beauty industry for 1-2 years.";
-            case EMPLOYEE_ADVANCED ->
-                    description = "3-4 work experience as nail technician";
+            case ADVANCED ->
+                    description = "3-4 years work experience as nail technician.";
             case EMPLOYEE_EXPERT ->
                     description = "5+ years working in that field leading to strong foundation providing me with more time for new upgrading courses to expand and refine my skills.";
         }
