@@ -46,9 +46,6 @@ public class AppointmentController {
 
 
         if (bindingResult.hasErrors()) {
-            bindingResult.getFieldErrors().forEach(error -> {
-                System.out.println(error.getDefaultMessage());
-            });
             redirectAttributes.addFlashAttribute("appointmentAddDTO", appointmentAddDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.appointmentAddDTO", bindingResult);
             return "redirect:/appointments/make-appointment";

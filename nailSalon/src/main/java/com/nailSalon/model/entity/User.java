@@ -50,6 +50,10 @@ public class User {
     @Fetch(FetchMode.SUBSELECT)
     private List<UserRoleEntity> roles;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cv_id", referencedColumnName = "id")
+    private CV cv;
+
 
     public User() {
         this.addedDesigns = new ArrayList<>();
@@ -58,6 +62,14 @@ public class User {
         this.appointments = new ArrayList<>();
         this.roles = new ArrayList<>();
         this.acceptedAppointments = new ArrayList<>();
+    }
+
+    public CV getCv() {
+        return cv;
+    }
+
+    public void setCv(CV cv) {
+        this.cv = cv;
     }
 
     public boolean getIsBanned() {

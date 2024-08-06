@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head">    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <form
+            class="welcome add-offer-form form-header-universal"
+            th:method="POST"
+            th:action="@{/apply-job}"
+            th:object="${applicationFormDTO}"
+    >
+    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Apply for position</span></h1>
+
+
+
+        <div class="form-group">
+            <div class="text-white label-holder d-flex justify-content-center">
+                <label for="experienceLevel" class="h4 mb-2">Experience Level</label>
+            </div>
+            <select
+                    class="browser-default custom-select"
+                    id="experienceLevel"
+                    name="experienceLevel"
+                    th:field="*{experienceLevel}"
+                    th:errorclass="'is-invalid alert-danger'"
+            >
+                <option value="">Select experience level</option>
+                <option th:each="level : ${experienceLevels}" th:value="${level}" th:text="${level.getDisplayName()}"></option>
+            </select>
+
+            <small
+                    th:each="error: ${#fields.errors('experienceLevel')}"
+                    th:text="${error}"
+                    class="invalid-feedback text-light rounded bg-danger"
+            >
+                Experience Level error message
+            </small>
+        </div>
+
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="personalMotivation" class="h4 mb-2">Personal Motivation</label>
+            </div>
+            <textarea
+                    type="text"
+                    class="form-control"
+                    id="personalMotivation"
+                    name="personalMotivation"
+                    th:field="*{personalMotivation}"
+                    th:errorclass="'is-invalid alert-danger'"
+            ></textarea>
+            <small
+                    th:each="error: ${#fields.errors('personalMotivation')}"
+                    th:text="${error}"
+                    class="invalid-feedback text-light rounded bg-danger"
+            >
+                Personal Motivation error message
+            </small>
+        </div>
+
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-info  mb-3">Apply for Job</button>
+        </div>
+        <p th:if="${applicationSubmitted}" class="alert alert-success">Application submitted successfully!</p>
+
+
+    </form>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>

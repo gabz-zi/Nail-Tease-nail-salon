@@ -18,8 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class DesignController {
     private final DesignService designService;
 
-    public DesignController(DesignService designService, DesignService designService1) {
-        this.designService = designService1;
+    public DesignController(DesignService designService) {
+        this.designService = designService;
     }
 
     @ModelAttribute("designData")

@@ -11,13 +11,6 @@ public class AddDesignDTO {
     @Size(min = 5, max = 40, message = "Name length must be between 5 and 40 characters!")
     private String name;
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
     @NotNull(message = "Please select category!")
     private Category category;
@@ -30,6 +23,14 @@ public class AddDesignDTO {
 
     public AddDesignDTO() {
 
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getName() {
