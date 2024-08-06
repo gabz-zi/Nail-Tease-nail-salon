@@ -25,7 +25,7 @@ public class Design {
         this.madeBy = madeBy;
     }
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
     @Column(nullable = false)

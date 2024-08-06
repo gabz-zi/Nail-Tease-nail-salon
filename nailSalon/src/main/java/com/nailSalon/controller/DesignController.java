@@ -1,10 +1,14 @@
 package com.nailSalon.controller;
 
 import com.nailSalon.model.dto.AddDesignDTO;
+import com.nailSalon.model.dto.DesignHomeDTO;
 import com.nailSalon.service.DesignService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,7 +27,7 @@ public class DesignController {
     }
 
     @ModelAttribute("designData")
-    public AddDesignDTO paintingData() {
+    public AddDesignDTO designData() {
         return new AddDesignDTO();
     }
 
@@ -33,12 +37,23 @@ public class DesignController {
         return "add-design";
     }
 
+    @GetMapping("/gallery")
+    public String viewGallery(Model model) {
+
+        model.addAttribute("designs", designService.findAll());
+
+        return "gallery";
+    }
+
+
+
     @PostMapping("/add-design")
     @Transactional
     public String doAddDesign(
             @Valid AddDesignDTO data,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes
+            RedirectAttributes redirectAttributes,
+            @AuthenticationPrincipal UserDetails userDetails
     ) {
 
         if (bindingResult.hasErrors()) {
@@ -49,7 +64,7 @@ public class DesignController {
             return "redirect:/add-design";
         }
 
-        boolean success = designService.create(data);
+        boolean success = designService.create(data, userDetails.getUsername());
 
         if (!success) {
             redirectAttributes.addFlashAttribute("designData", data);
@@ -60,7 +75,7 @@ public class DesignController {
         return "redirect:/add-design";
     }
 
-    @GetMapping("/paintings/remove/{id}")
+    @GetMapping("/designs/remove/{id}")
     public ModelAndView remove(@PathVariable("id") Long id) {
 
         designService.remove(id);
@@ -68,11 +83,10 @@ public class DesignController {
         return new ModelAndView("redirect:/home");
     }
 
-    @GetMapping("/paintings/add-to-favourites/{recipeId}")
-    public String addToFavourites(@PathVariable long recipeId) {
+    @GetMapping("/designs/add-to-favourites/{recipeId}")
+    public String addToFavourites(@PathVariable long recipeId, @AuthenticationPrincipal UserDetails userDetails) {
 
-        designService.addToFavourites(1L, recipeId);   // the id should change according to do logged user
- //TODO
+        designService.addToFavourites(userDetails.getUsername(), recipeId);
         return "redirect:/home";
     }
 }

@@ -41,7 +41,7 @@ public class HomeController {
     public ModelAndView home(@AuthenticationPrincipal UserDetails userDetails) {
 
         ModelAndView modelAndView = new ModelAndView("my-appointments");
-        DesignHomeDTO designsForHomePage = designService.getDesignsForHomePage();
+        DesignHomeDTO designsForHomePage = designService.getDesignsForHomePage(userDetails.getUsername());
         List<MyAppointmentView> myAppointments = appointmentService.getAppointmentsOfUser(userDetails.getUsername());
 
         if (userDetails instanceof NailSalonUserDetails nailSalonUserDetails) {

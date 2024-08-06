@@ -27,7 +27,7 @@
                                 <td>Remove</td>
                             </tr>
                         </table>
-                        <table class="table table-striped table-purple-appointments">                 <!--//TODO--><!--  Hint-->
+                        <table class="table table-striped table-purple-appointments">
                             <tr class="my-designs" th:each="a : ${myAppointments}">                                               <!--  <tr class="my-designs" th:each="p : ${YourPaintings.getPaintings}">-->
                                 <td class="created-on-td-original" th:text="*{a.getCreateOn()}">{appointment created on}</td>                                             <!--  <td th:text="*{p.name}"></td>-->
                                 <td class="made-for-td-original" th:text="*{a.getMadeFor()}">{made for}</td>

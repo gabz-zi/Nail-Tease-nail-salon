@@ -33,7 +33,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/make-appointment")
-    public String makeAppointment(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+    public String makeAppointment(Model model) {
         model.addAttribute("services", nailServiceService.getAllServicesForAppointmentPage());
         return "make-appointment";
     }

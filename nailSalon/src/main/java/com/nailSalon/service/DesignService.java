@@ -6,8 +6,14 @@ import com.nailSalon.model.entity.User;
 import com.nailSalon.repository.DesignRepository;
 import com.nailSalon.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,78 +23,119 @@ public class DesignService {
     private final DesignRepository designRepository;
     private final UserRepository userRepository;
 
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+
     public DesignService(DesignRepository designRepository, UserRepository userRepository) {
         this.designRepository = designRepository;
         this.userRepository = userRepository;
     }
 
-    public boolean create(AddDesignDTO data) {
 
-        Optional<User> byId = userRepository.findById(1L); //LOGGED IN USER ID MUST BE
-//TODO
-        if (byId.isEmpty()) {
+
+    @Transactional
+    public boolean create(AddDesignDTO data, String username) {
+        Optional<User> byName = userRepository.findByUsername(username);
+        if (byName.isEmpty()) {
             return false;
         }
 
-
         Design design = new Design();
         design.setName(data.getName());
-        design.setMadeBy(byId.get());
-        design.setImageUrl(data.getImageUrl());
+        design.setMadeBy(byName.get());
         design.setCategory(data.getCategory());
+
+        // Save the uploaded image
+        String imageUrl = saveFile(data.getImageUrl());
+        design.setImageUrl(imageUrl);
 
         designRepository.save(design);
 
         return true;
     }
 
-    public DesignHomeDTO getDesignsForHomePage() {
+    private String saveFile(MultipartFile file) {
+        String fileName = file.getOriginalFilename();
+        Path path = Paths.get(uploadDir, fileName);
+
+        try {
+            Files.createDirectories(path.getParent());
+            Files.write(path, file.getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException("Could not save file: " + fileName, e);
+        }
+
+        return "/uploads/" + fileName;
+    }
+
+   /* public boolean create(AddDesignDTO data, String username) {
+
+        Optional<User> byName = userRepository.findByUsername(username);
+        if (byName.isEmpty()) {
+            return false;
+        }
+
+
+        Design design = new Design();
+        design.setName(data.getName());
+        design.setMadeBy(byName.get());
+        design.setImageUrl(data.getImageUrl());
+        design.setCategory(data.getCategory());
+
+        designRepository.save(design);
+
+        return true;
+    } */
+
+    public DesignHomeDTO getDesignsForHomePage(String username) {
         List<Design> designs = designRepository.findAll();
 
         List<MyDesignsDTO> myDesigns = new ArrayList<>();
-        List<OtherDesignsDTO> otherDesigns = new ArrayList<>();
+        List<Design> otherDesigns = new ArrayList<>();
         List<FavsDesigns> favsDesigns = new ArrayList<>();
 
         for (Design design : designs) {
-            String loggedUsername = "new";  //logged usr username
-//TODO
-            if (design.getMadeBy().getUsername().equals(loggedUsername)) {
+            if (design.getMadeBy().getUsername().equals(username)) {
                 myDesigns.add(new MyDesignsDTO(design));
-                User user = userRepository.findByUsername(loggedUsername).get();
-                if (design.getMadeBy().getUsername().equals(loggedUsername) && user.getFavouriteDesigns().contains(design)) {
+                User user = userRepository.findByUsername(username).get();
+                if (design.getMadeBy().getUsername().equals(username) && user.getFavouriteDesigns().contains(design)) {
                     favsDesigns.add(new FavsDesigns(design));
                 }
                 if (design.isInFavorites()) {
                     favsDesigns.add(new FavsDesigns(design));
                 }
-            } else {
-                otherDesigns.add(new OtherDesignsDTO(design));
             }
         }
 
         return new DesignHomeDTO(myDesigns, otherDesigns, favsDesigns);
     }
 
+
+
     public void remove(Long id) {
         designRepository.deleteById(id);
     }
 
     @Transactional
-    public void addToFavourites(Long id, long paintingId) {
-        Optional<User> userOpt = userRepository.findById(id);
+    public void addToFavourites(String username, long designId) {
+        Optional<User> userOpt = userRepository.findByUsername(username);
 
         if (userOpt.isEmpty()) {
             return;
         }
 
-        Optional<Design> paintingOpt = designRepository.findById(paintingId);
+        Optional<Design> designOptional = designRepository.findById(designId);
 
-        if (paintingOpt.isEmpty()) {
+        if (designOptional.isEmpty()) {
             return;
         }
 
-        userOpt.get().addFavourite(paintingOpt.get());
+        userOpt.get().addFavourite(designOptional.get());
 
         userRepository.save(userOpt.get());
+    }
+
+    public List<Design> findAll() {
+       return designRepository.findAll();
     }
 }

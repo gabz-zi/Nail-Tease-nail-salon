@@ -63,7 +63,7 @@ public class ApplicationController {
 
     @Transactional
     @GetMapping("/applicants")
-    public ModelAndView applicants(@AuthenticationPrincipal UserDetails userDetails){
+    public ModelAndView applicants(){
         ModelAndView modelAndView = new ModelAndView("applicants");
         List<ApplicantDTO> applicantDTOS = applicantService.findAllApplicants();
         modelAndView.addObject("applicantsDTO", applicantDTOS);

@@ -16,7 +16,17 @@
 <header>
     <nav>
         <div class="home">
-            <a th:href="@{/}"><img src="/images/nailslogo.png" alt="logo"></a>
+            <!-- Link for authenticated users -->
+            <a sec:authorize="isAuthenticated()"
+               th:href="@{/my-appointments}">
+                <img src="/images/nailslogo.png" alt="logo">
+            </a>
+
+            <!-- Link for unauthenticated users -->
+            <a sec:authorize="!isAuthenticated()"
+               th:href="@{/}">
+                <img src="/images/nailslogo.png" alt="logo">
+            </a>
             <a sec:authorize="hasRole('EMPLOYEE')"
                 th:href="@{/add-design}"
               >
@@ -36,14 +46,6 @@
         </div>
 
         <div class="links">
-            <li sec:authorize="!isAuthenticated()">
-                <a th:href="@{/login}">Login</a>
-            </li>
-
-            <li sec:authorize="!isAuthenticated()">
-                <a th:href="@{/register}">Register</a>
-            </li>
-
 
             <li>
                 <div class="dropdown">
@@ -54,6 +56,19 @@
                         <a sec:authorize="isAuthenticated()" th:href="@{/careers}">Careers</a>
                     </div>
                 </div>
+            </li>
+
+
+            <li sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Login</a>
+            </li>
+
+            <li sec:authorize="!isAuthenticated()">
+                <a th:href="@{/register}">Register</a>
+            </li>
+
+            <li>
+                <a th:href="@{/gallery}">Gallery</a>
             </li>
 
             <li sec:authorize="isAuthenticated()">

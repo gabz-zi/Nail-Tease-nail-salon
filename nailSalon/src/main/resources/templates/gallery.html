@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <h1 class="headline display-3 text-center" style="margin-bottom: -1em; font-family: math">Gallery</h1></div>
+    <p class="glow span w-100 bg-light mx-auto"></p>
+    <hr class="glow w-25 mx-auto second-glow"/>
+    <div class="container">
+        <div class="row row-gallery">
+            <div class="col-md-4 card" th:each="design : ${designs}">
+                <div class="card mb-4">
+                    <img th:src="@{|${design.imageUrl}|}" class="card-img-top" alt="Design Image">
+                        <h5 class="card-title" th:text="${design.getName()}"></h5>
+                        <p class="card-text">Category: <span th:text="${design.getCategory().toString().toLowerCase()}"></span></p>
+                        <p class="card-text">Made by: <span th:text="${design.getMadeBy().getUsername()}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>

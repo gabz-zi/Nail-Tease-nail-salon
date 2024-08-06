@@ -33,4 +33,7 @@ server:
   servlet:
     application-display-name: NailSalon
 
+file:
+  upload-dir: src/main/resources/static/uploads
+
 

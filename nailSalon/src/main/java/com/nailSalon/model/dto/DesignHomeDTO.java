@@ -1,16 +1,18 @@
 package com.nailSalon.model.dto;
 
+import com.nailSalon.model.entity.Design;
+
 import java.util.List;
 
 public class DesignHomeDTO {
     private List<MyDesignsDTO> myDesigns;
-    private List<OtherDesignsDTO> allOtherDesigns;
+    private List<Design> designs;
     private List<FavsDesigns> favoriteDesigns;
 
-    public DesignHomeDTO(List<MyDesignsDTO> myDesigns, List<OtherDesignsDTO> allOtherDesigns
+    public DesignHomeDTO(List<MyDesignsDTO> myDesigns, List<Design> designs
     , List<FavsDesigns> favoriteDesigns) {
         this.myDesigns = myDesigns;
-        this.allOtherDesigns = allOtherDesigns;
+        this.designs = designs;
         this.favoriteDesigns = favoriteDesigns;
     }
 
@@ -22,12 +24,12 @@ public class DesignHomeDTO {
         this.myDesigns = myDesigns;
     }
 
-    public List<OtherDesignsDTO> getAllOtherDesigns() {
-        return allOtherDesigns;
+    public List<Design> getDesigns() {
+        return designs;
     }
 
-    public void setAllOtherDesigns(List<OtherDesignsDTO> allOtherDesigns) {
-        this.allOtherDesigns = allOtherDesigns;
+    public void setDesigns(List<Design> designs) {
+        this.designs = designs;
     }
 
     public List<FavsDesigns> getFavoriteDesigns() {

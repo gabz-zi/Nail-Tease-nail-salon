@@ -31,4 +31,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     List<Appointment> findAllByStatusAndUserUsernameNotAndCancelled(int i, String username, boolean b);
 
     List<Appointment> findAllByCancelled(boolean b);
+
+    List<Appointment> findAllByServiceId(Long id);
 }

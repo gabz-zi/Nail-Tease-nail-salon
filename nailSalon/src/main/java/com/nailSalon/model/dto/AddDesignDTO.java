@@ -4,11 +4,12 @@ import com.nailSalon.model.entity.Category;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 
 public class AddDesignDTO {
     @NotNull
-    @Size(min = 5, max = 40, message = "Name length must be between 5 and 40 characters!")
+    @Size(min = 3, max = 40, message = "Name length must be between 5 and 40 characters!")
     private String name;
 
 
@@ -16,9 +17,8 @@ public class AddDesignDTO {
     private Category category;
 
 
-    @NotNull
-    @NotBlank(message = "Please enter valid image URL!")
-    private String imageUrl;
+    @NotNull(message = "Please upload an image!")
+    private MultipartFile imageUrl;
 
 
     public AddDesignDTO() {
@@ -41,13 +41,11 @@ public class AddDesignDTO {
         this.name = name;
     }
 
-
-    public String getImageUrl() {
+    public MultipartFile getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(MultipartFile imageUrl) {
         this.imageUrl = imageUrl;
     }
-
 }

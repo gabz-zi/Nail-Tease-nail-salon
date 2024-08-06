@@ -2,8 +2,10 @@ package com.nailSalon.service;
 
 import com.nailSalon.model.dto.AddNailServiceDTO;
 import com.nailSalon.model.dto.AppointmentServiceDTO;
+import com.nailSalon.model.entity.Appointment;
 import com.nailSalon.model.entity.Category;
 import com.nailSalon.model.entity.NailService;
+import com.nailSalon.repository.AppointmentRepository;
 import com.nailSalon.repository.NailServiceRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +20,11 @@ import java.util.stream.Collectors;
 public class NailServiceService {
 
     private final NailServiceRepository nailServiceRepository;
+    private final AppointmentRepository appointmentRepository;
 
-    public NailServiceService(NailServiceRepository nailServiceRepository) {
+    public NailServiceService(NailServiceRepository nailServiceRepository, AppointmentRepository appointmentRepository) {
         this.nailServiceRepository = nailServiceRepository;
+        this.appointmentRepository = appointmentRepository;
     }
 
     public void create(AddNailServiceDTO data) {
@@ -56,8 +60,13 @@ public class NailServiceService {
         return df.format(minPrice);
     }
 
-    public void delete(Long id) {
-        nailServiceRepository.deleteById(id);
+    public void delete(Long id) { //TODO Handle exception gracefully
+        List<Appointment> appointments = appointmentRepository.findAllByServiceId(id);
+        if (appointments.isEmpty()) {
+            nailServiceRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Cannot delete nail service with existing appointments!");
+        }
     }
 
     public NailService getByName(String name) {
