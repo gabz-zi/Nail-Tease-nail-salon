@@ -1152,3 +1152,11 @@ nav {
 .row-gallery {
     margin-top: -4em;
 }
+
+@media (min-width: 1200px) {
+    .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1140px;
+    }
+}

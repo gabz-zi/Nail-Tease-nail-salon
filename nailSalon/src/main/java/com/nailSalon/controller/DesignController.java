@@ -10,10 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -55,12 +52,10 @@ public class DesignController {
             RedirectAttributes redirectAttributes,
             @AuthenticationPrincipal UserDetails userDetails
     ) {
-
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("designData", data);
             redirectAttributes.addFlashAttribute(
                     "org.springframework.validation.BindingResult.designData", bindingResult);
-
             return "redirect:/add-design";
         }
 
@@ -68,7 +63,6 @@ public class DesignController {
 
         if (!success) {
             redirectAttributes.addFlashAttribute("designData", data);
-
             return "redirect:/add-design";
         }
         redirectAttributes.addFlashAttribute("addedSuccessfully", true);
@@ -88,5 +82,11 @@ public class DesignController {
 
         designService.addToFavourites(userDetails.getUsername(), recipeId);
         return "redirect:/home";
+    }
+
+    @DeleteMapping("/designs/remove/{id}")
+    public String removeDesign(@PathVariable Long id) {
+        designService.delete(id);
+        return "redirect:/gallery";
     }
 }

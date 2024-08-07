@@ -14,7 +14,7 @@ public class AddDesignDTO {
 
 
     @NotNull(message = "Please select category!")
-    private Category category;
+    private String category;
 
 
     @NotNull(message = "Please upload an image!")
@@ -25,12 +25,12 @@ public class AddDesignDTO {
 
     }
 
-    public Category getCategory() {
-        return category;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public String getCategory() {
+        return category;
     }
 
     public String getName() {

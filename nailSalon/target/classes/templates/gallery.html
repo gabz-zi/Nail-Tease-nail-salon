@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:replace="fragments/commons::head">
     <link rel="shortcut icon" href="/favicon.ico">
 </head>
@@ -13,15 +14,19 @@
         <div class="row row-gallery">
             <div class="col-md-4 card" th:each="design : ${designs}">
                 <div class="card mb-4">
-                    <img th:src="@{|${design.imageUrl}|}" class="card-img-top" alt="Design Image">
+                    <img th:src="@{|${design.getImageUrl()}|}" class="card-img-top" alt="Design Image">
                         <h5 class="card-title" th:text="${design.getName()}"></h5>
-                        <p class="card-text">Category: <span th:text="${design.getCategory().toString().toLowerCase()}"></span></p>
-                        <p class="card-text">Made by: <span th:text="${design.getMadeBy().getUsername()}"></span></p>
+                        <p class="card-text">Category: <span th:text="${design.getCategory().toLowerCase()}"></span></p>
+                        <p class="card-text">Made by: <span th:text="${design.getMadeByUsername()}"></span></p>
+                        <span>
+                            <form sec:authorize="hasRole('ADMIN')" th:action="@{/designs/remove/{id}(id=${design.getId()})}" th:method="DELETE">
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </main>
 <footer th:replace="fragments/commons::footer"></footer>
 </body>
