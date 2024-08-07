@@ -22,23 +22,27 @@
                 <img src="/images/nailslogo.png" alt="logo">
             </a>
 
+
             <!-- Link for unauthenticated users -->
             <a sec:authorize="!isAuthenticated()"
                th:href="@{/}">
                 <img src="/images/nailslogo.png" alt="logo">
             </a>
+
+
             <a sec:authorize="hasRole('EMPLOYEE')"
                 th:href="@{/add-design}"
+               th:text="#{nav_bar_add_design}"
               >
                 Add Design</a>
 
             <a sec:authorize="hasRole('ADMIN')">
                 <div class="dropdown">
-                    <button class="logout dropbtn">Admin<i class="fa fa-caret-down"></i></button>
+                    <button class="logout dropbtn" th:text="#{nav_bar_admin}">Admin<i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-content">
-                        <a th:href="@{/add-service}">Add Service</a>
-                        <a th:href="@{/banned-employees}">Firing</a>
-                        <a th:href="@{/applicants}">Hiring</a>
+                        <a th:href="@{/add-service}" th:text="#{nav_bar_add_service}">Add Service</a>
+                        <a th:href="@{/banned-employees}" th:text="#{nav_bar_firing}">Firing</a>
+                        <a th:href="@{/applicants}" th:text="#{nav_bar_hiring}">Hiring</a>
                     </div>
                 </div>
             </a>
@@ -49,36 +53,37 @@
 
             <li>
                 <div class="dropdown">
-                    <button class="logout dropbtn">About<i class="fa fa-caret-down"></i></button>
+                    <button class="logout dropbtn" th:text="#{nav_bar_about}">About<i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-content">
-                        <a th:href="@{/about-us}">About Us</a>
-                        <a th:href="@{/services}">Services</a>
-                        <a sec:authorize="isAuthenticated()" th:href="@{/careers}">Careers</a>
+                        <a th:href="@{/about-us}" th:text="#{nav_bar_about_us}">About Us</a>
+                        <a th:href="@{/services}" th:text="#{nav_bar_services}">Services</a>
+                        <a sec:authorize="isAuthenticated()" th:href="@{/careers}"
+                           th:text="#{nav_bar_careers}">Careers</a>
                     </div>
                 </div>
             </li>
 
 
             <li sec:authorize="!isAuthenticated()">
-                <a th:href="@{/login}">Login</a>
+                <a th:href="@{/login}" th:text="#{nav_bar_login}">Login</a>
             </li>
 
             <li sec:authorize="!isAuthenticated()">
-                <a th:href="@{/register}">Register</a>
+                <a th:href="@{/register}" th:text="#{nav_bar_register}">Register</a>
             </li>
 
             <li>
-                <a th:href="@{/gallery}">Gallery</a>
+                <a th:href="@{/gallery}" th:text="#{nav_bar_gallery}">Gallery</a>
             </li>
 
             <li sec:authorize="isAuthenticated()">
             <div class="dropdown">
-                <button class="logout dropbtn">Appointments<i class="fa fa-caret-down"></i></button>
+                <button class="logout dropbtn" th:text="#{nav_bar_appointments}">Appointments<i class="fa fa-caret-down"></i></button>
                 <div class="dropdown-content">
-                    <a th:href="@{/appointments/make-appointment}">Make Appointment</a>
-                    <a th:href="@{/my-appointments}">My Appointments</a>
-                    <a sec:authorize="hasRole('EMPLOYEE')" th:href="@{/pending-appointments}">Awaiting Approval</a>
-                    <a sec:authorize="hasRole('EMPLOYEE')" th:href="@{/todays-appointments}">For Today</a>
+                    <a th:href="@{/appointments/make-appointment}" th:text="#{nav_bar_make_appointment}">Make Appointment</a>
+                    <a th:href="@{/my-appointments}" th:text="#{nav_bar_my_appointments}">My Appointments</a>
+                    <a sec:authorize="hasRole('EMPLOYEE')" th:href="@{/pending-appointments}" th:text="#{nav_bar_awaiting_approval}">Awaiting Approval</a>
+                    <a sec:authorize="hasRole('EMPLOYEE')" th:href="@{/todays-appointments}" th:text="#{nav_bar_for_today}">For Today</a>
                 </div>
             </div>
             </li>
@@ -87,9 +92,26 @@
                 <form
                         th:method="POST"
                         th:action="@{/logout}" >
-                    <input class="logout" type="submit" value="Logout">
+                    <input class="logout" type="submit" th:value="#{nav_bar_logout}">
                 </form>
             </li>
+
+            <li>
+                <form th:method="GET">
+                    <label class="text-white" for="lang" style="font-size: 0.6em"
+                    th:text="#{nav_bar_language}">
+                        Language</label>
+                    <select
+                            id="lang"
+                            name="lang"
+                            onchange="this.form.submit()"
+                            style="font-size: 0.5em">
+                        <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                        <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                    </select>
+                </form>
+            </li>
+
         </div>
     </nav>
 </header>
