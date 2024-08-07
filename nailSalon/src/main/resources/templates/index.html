@@ -7,20 +7,20 @@
 <main>
 <!--    <div class="container bg-blur rounded mt-5 ">-->
     <div class="welcome">
-        <h1>Welcome to "Nail Tease" beauty salon</h1>
+        <h1 th:text="#{index_page_welcome}">Welcome to "Nail Tease" beauty salon</h1>
         <hr class="my-3 bg-white w-50"/>
 
-        <p class="h4">
+        <p class="h4" th:text="#{index_page_paragraph}">
             Experience beauty and empowerment with Nails Tease's premium nail care services and clean products. Our app is especially designed for your convenience. Here you can explore the work of our professional nail artists and once you've been convinced that's the place for you,
             your appointment will be only a click away!
         </p>
         <hr class="my-3 bg-white w-75"/>
 
         <h3>
-            <a class="primary-text" href="/login">Login</a>
-            if you have an account or
-            <a class="primary-text" href="/register">Register</a>
-            now and check our designs.
+            <a class="primary-text" href="/login" th:text="#{index_page_login}">Login</a>
+            <span th:text="#{index_page_final}">if you have an account or</span>
+            <a class="primary-text" href="/register" th:text="#{index_page_register}">Register</a>
+            <span th:text="#{index_page_final1}">now and check our designs.</span>
         </h3>
     </div>
 </main>

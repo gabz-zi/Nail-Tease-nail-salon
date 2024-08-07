@@ -27,6 +27,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/**").permitAll()
                                 .requestMatchers("/pending-appointments", "/todays-appointments", "/add-design", "appointments/accept/", "/appointments/decline/").hasRole(RoleName.EMPLOYEE.name())
                                 .requestMatchers("/users/fire/", "/users/hire/","/add-service", "/applicants", "/banned-employees", "/services/remove/", "/designs/remove/").hasRole(RoleName.ADMIN.name())
+                                .requestMatchers("/appointments/remove/", "/apply-job").hasRole(RoleName.USER.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->
