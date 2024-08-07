@@ -1,0 +1,17 @@
+    {
+        "name": "gelish",
+        "category": "GELISH",
+        "madeBy": "new",
+        "imageUrl": "/uploads/nailslogo.jpg"
+    }
+    private long id;
+
+    private String name;
+
+    private Category category;
+
+
+    private User madeBy;
+
+    private String imageUrl;
+
