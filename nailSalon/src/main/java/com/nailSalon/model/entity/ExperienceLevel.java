@@ -6,7 +6,7 @@ public enum ExperienceLevel {
     BEGINNER("➤ I have been practising the profession for about a year."),
     INTERMEDIATE("➤ I have been working in the beauty industry for 1-2 years."),
     ADVANCED("➤ 3-4 years work experience as nail technician."),
-    EMPLOYEE_EXPERT("➤ 5+ years working in that field leading to strong foundation now focusing on new upgrading courses.");
+    EXPERT("➤ 5+ years working in that field leading to strong foundation now focusing on new upgrading courses.");
 
     private final String displayName;
 

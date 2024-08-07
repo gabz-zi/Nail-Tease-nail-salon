@@ -3,6 +3,9 @@ package com.nailSalon.service;
 import com.nailSalon.model.dto.UserRegisterDTO;
 import com.nailSalon.model.entity.Design;
 import com.nailSalon.model.entity.User;
+import com.nailSalon.model.entity.UserRoleEntity;
+import com.nailSalon.model.enums.RoleName;
+import com.nailSalon.repository.RoleRepository;
 import com.nailSalon.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,11 +17,13 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
     }
 
     public boolean register(UserRegisterDTO data) {
@@ -34,6 +39,8 @@ public class UserService {
         user.setUsername(data.getUsername());
         user.setEmail(data.getEmail());
         user.setPassword(passwordEncoder.encode(data.getPassword()));
+        UserRoleEntity userRole = roleRepository.findByName(RoleName.USER);
+        user.getRoles().add(userRole);
 
         this.userRepository.save(user);
 
@@ -67,14 +74,6 @@ public class UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
-
-    public List<Design> getPaintingFromCurrentUser(long id) {
-        User user = userRepository.findById(id).orElse(null);
-        assert user != null;
-        return user.getAddedDesigns();
-    }
-
-
 
 
 }

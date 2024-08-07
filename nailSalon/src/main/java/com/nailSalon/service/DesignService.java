@@ -39,6 +39,7 @@ public class DesignService {
 
     @Transactional
     public boolean create(AddDesignDTO data, String username) {
+        String imageUrl = saveFile(data.getImageUrl());
         // Directly pass MultipartFile to the DesignServiceClient
         designServiceClient.createDesign(
                 data.getName(),

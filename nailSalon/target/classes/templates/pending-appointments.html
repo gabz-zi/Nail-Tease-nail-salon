@@ -26,9 +26,11 @@
                         </table>
                         <table class="table table-striped table-purple-appointments">
                             <tr class="my-designs" th:each="a : ${pending}">
-                                <td class="status-td" th:text="*{a.getCreateBy()}">{created by}</td>
+                                <td class="created-on-td" th:text="*{a.getCreateOn()}">{created by}</td>
+                                <td class="status-td" th:text="*{a.getCreateBy()}">{created on}</td>
                                 <td class="made-for-td" th:text="*{a.getMadeFor()}">{made for}</td>
                                 <td class="service-td" th:text="*{a.getService()}">{service}</td>
+                                <td class="price-td" th:text="*{a.getPrice()}">{price}</td>
                                 <td class="remove-td">
                                     <form th:action="@{/appointments/accept/{id}(id=${a.id})}" th:method="post" style="display:inline;">
                                         <button type="submit" class="btn-circle btn-success"><i class="fas fa-check"></i></button>

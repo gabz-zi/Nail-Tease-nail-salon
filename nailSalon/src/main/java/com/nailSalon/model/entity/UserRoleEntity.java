@@ -20,6 +20,13 @@ public class UserRoleEntity  {
     private RoleName name;
 
 
+    public UserRoleEntity() {
+    }
+
+    public UserRoleEntity(Long id, RoleName name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

@@ -23,8 +23,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers("/", "/login", "/register", "/about-us", "/services").permitAll()
+                                .requestMatchers("/", "/login", "/register", "/about-us", "/services", "/gallery").permitAll()
                                 .requestMatchers("/api/**").permitAll()
+                                .requestMatchers("/pending-appointments", "/todays-appointments", "/add-design", "appointments/accept/", "/appointments/decline/").hasRole(RoleName.EMPLOYEE.name())
+                                .requestMatchers("/users/fire/", "/users/hire/","/add-service", "/applicants", "/banned-employees", "/services/remove/", "/designs/remove/").hasRole(RoleName.ADMIN.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->

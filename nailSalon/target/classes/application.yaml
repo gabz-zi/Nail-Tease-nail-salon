@@ -42,3 +42,8 @@ new:
     api:
       url: http://localhost:8082/api/designs
 
+app:
+    admin:
+      username: ${APP_ADMIN_USERNAME:admin}  // Add you environment Variables, they will override the values specified in the application.yaml if they are set in the environment. If the environment variables are not set, it will fall back to the default values specified (admin and adminPassword).
+      password: ${APP_ADMIN_PASSWORD:adminPassword}
+

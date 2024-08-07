@@ -46,7 +46,7 @@ public class CV {
                     description = "I have been working in the beauty industry for 1-2 years.";
             case ADVANCED ->
                     description = "3-4 years work experience as nail technician.";
-            case EMPLOYEE_EXPERT ->
+            case EXPERT ->
                     description = "5+ years working in that field leading to strong foundation providing me with more time for new upgrading courses to expand and refine my skills.";
         }
         this.description = description;
