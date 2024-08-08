@@ -24,7 +24,7 @@ Of course you have to catch the nail(👁️) of the admin to get that role. ;)
 But you needn't worry, I am sure the admin will see you are the coolest guy.
 The admin could also reject applications but that is not what we attract here! Their giving hand gets into a fist when an employee tries to ruin the client paradise this app is by rejecting appointments here and there so they can track who is banned and fire them.
 ![pending](https://github.com/user-attachments/assets/cfa3fbf6-3179-4a5f-b60a-cad495bd5a69)
-Five click on that red button and it's over for you badGuy!
+Five clicks on that red button and it's over for you badGuy!
 ![about to fire](https://github.com/user-attachments/assets/b4f787fc-475b-462a-aab8-14383e4b05e0)
 ![fired](https://github.com/user-attachments/assets/f12e6551-bff1-4ebc-8651-c3515fc132c6)
 And he thought I was kidding... Pitty, but turning the page there are excellent employees who cherish their work and upload it into our gallery for you to admire.
