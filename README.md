@@ -16,7 +16,7 @@ After you've logged in you may take a look at the available services, if you're 
 ![my-appointments](https://github.com/user-attachments/assets/682bdc9f-31be-44ac-a028-5d7ca4dd97df)
 
 You can still cancel anytime without having to go full mode cold war on with your nail artist! :)
-Sounds like a dream, right? Let's hop back in reality and become a part of the dream team:
+Sounds like a dream, right? Let's hop back into reality and become a part of the dream team:
 ![join-us](https://github.com/user-attachments/assets/f70ced0e-3c1e-460a-8183-2b04a2ffaba1)
 ![join-us1](https://github.com/user-attachments/assets/7e3148ba-7377-4407-a1fb-5efda173b055)
 Of course you have to catch the nail(👁️) of the admin to get that role. ;)
