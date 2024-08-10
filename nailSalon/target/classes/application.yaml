@@ -44,6 +44,6 @@ new:
 
 app:
     admin:
-      username: ${APP_ADMIN_USERNAME}  // Add you environment Variables!
-      password: ${APP_ADMIN_PASSWORD}
+      username: ${APP_ADMIN_USERNAME=gabz}  // Add you environment Variables!
+      password: ${APP_ADMIN_PASSWORD=gabz}
 
