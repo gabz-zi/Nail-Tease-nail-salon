@@ -1160,3 +1160,24 @@ nav {
         max-width: 1140px;
     }
 }
+
+.error {
+    margin-top: 14em;
+    padding-right: 5em;
+}
+
+.link-error {
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+.link-error:hover {
+    color: #332231;
+    text-decoration: underline;
+}
+
+.div-error {
+    margin-top: 22em;
+    margin-left: 1em;
+    margin-bottom: -21em;
+}

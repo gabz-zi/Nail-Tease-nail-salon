@@ -7,6 +7,7 @@ import com.nailSalon.model.entity.Category;
 import com.nailSalon.model.entity.NailService;
 import com.nailSalon.repository.AppointmentRepository;
 import com.nailSalon.repository.NailServiceRepository;
+import com.nailSalon.service.exception.RemoveServiceWithPresentAppointments;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
@@ -65,7 +66,17 @@ public class NailServiceService {
         if (appointments.isEmpty()) {
             nailServiceRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Cannot delete nail service with existing appointments!");
+            String message;
+            if (appointments.size() == 1) {
+                message = String.format(
+                        "Cannot delete nail service with existing appointments! There already is 1 appointment for service with name - %s."
+                        ,appointments.get(0).getService().getName());
+            } else {
+                message = String.format(
+                        "Cannot delete nail service with existing appointments! There already are %d appointments for service - %s."
+                        , appointments.size(), appointments.get(0).getService().getName());
+            }
+            throw new RemoveServiceWithPresentAppointments(message);
         }
     }
 

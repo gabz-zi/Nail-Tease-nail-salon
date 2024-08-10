@@ -36,7 +36,7 @@ public class SecurityConfig {
                                 .usernameParameter("username")
                                 .passwordParameter("password")
                                 .defaultSuccessUrl("/my-appointments", true)
-                                .failureUrl("/login/error")
+                                .failureUrl("/login?error=true")
                 )
                 .logout(logout ->
                         logout

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+<main>
+    <!--    <div class="container bg-blur rounded mt-5 ">-->
+
+    <div class="div-error text-center">
+    <a th:href="@{/services}" class="link-error">Go back to services</a>
+    </div>
+
+    <div class="headline-block error">
+        <h2 class="text text-center" th:text="${message}">Exception message</h2>
+    </div>
+    <p class="glow span w-100 bg-light mx-auto"></p>
+    <hr class="glow w-100 mx-auto second-glow"/>
+
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>

@@ -58,6 +58,10 @@
             </small>
         </div>
 
+        <small th:if="${param.error}">
+            <p style="color: white; background: #dc3545; border-radius: 5px">Incorrect username or password!</p>
+        </small>
+
         <div class="button-holder d-flex justify-content-center">
             <button type="submit">Login</button>
         </div>

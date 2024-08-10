@@ -4,12 +4,14 @@ import com.nailSalon.model.dto.AddNailServiceDTO;
 import com.nailSalon.model.entity.Category;
 import com.nailSalon.model.entity.NailService;
 import com.nailSalon.service.NailServiceService;
+import com.nailSalon.service.exception.RemoveServiceWithPresentAppointments;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -96,5 +98,13 @@ public class NailServiceController {
         nailServiceService.delete(id);
         return "redirect:/services";
     }
+
+    @ExceptionHandler(RemoveServiceWithPresentAppointments.class)
+    public ModelAndView handleRemoveServiceHasAppointments(RemoveServiceWithPresentAppointments e) {
+        ModelAndView modelAndView = new ModelAndView("remove-service-having-appointments");
+        modelAndView.addObject("message", e.getMessage());
+        return modelAndView;
+    }
+
 
 }

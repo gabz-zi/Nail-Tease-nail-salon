@@ -585,6 +585,14 @@ class NailSalonApplicationTests {
         // Arrange
         Long id = 1L;
         Appointment appointment = new Appointment();
+        NailService service = new NailService();
+        service.setName("test");
+        service.setAppointments(Collections.singletonList(appointment));
+        service.setCategory(Category.GEL);
+        service.setPrice(50);
+        service.setDuration("1h");
+        service.setId(1L);
+        appointment.setService(service);
         when(appointmentRepository.findAllByServiceId(id)).thenReturn(Collections.singletonList(appointment));
 
         // Act & Assert
@@ -592,7 +600,7 @@ class NailSalonApplicationTests {
                 RuntimeException.class,
                 () -> nailServiceService.delete(id)
         );
-        assertEquals("Cannot delete nail service with existing appointments!", thrown.getMessage());
+        assertEquals("Cannot delete nail service with existing appointments! There already is 1 appointment for service with name - test.", thrown.getMessage());
     }
 
     @Test
