@@ -1,4 +1,4 @@
-# Spring-softUni-project
+# Spring-softUni-project nail salon
 #  The project
 
 Hey, 👉You👈! Gotcha!💥 Are you still running from unnecessary phone calls?! Here we click them away!🧐 "Nail Tease" is a webiste for making online appointments and all that without a single vocal cord in your throat trembling!
